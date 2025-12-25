@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RegBridge - Hospital Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <span class="logo-icon">🏥</span>
+                <span class="logo-text">RegBridge</span>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="#" class="active">Dashboard</a></li>
+                <li><a href="#">Schedule</a></li>
+                <li><a href="#">Equipment</a></li>
+                <li><a href="#">Regulations</a></li>
+                <li><a href="#">Analytics</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+            <div class="navbar-profile">
+                <img src="https://via.placeholder.com/40" alt="Profile">
+                <span>Admin</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <h3>Quick Access</h3>
+                <a href="#overview" class="sidebar-item active" data-section="metrics-grid">
+                    <span class="icon">📊</span>
+                    <span>Overview</span>
+                </a>
+                <a href="#schedule" class="sidebar-item" data-section="schedule-section">
+                    <span class="icon">👥</span>
+                    <span>Staff Schedule</span>
+                </a>
+                <a href="#resources" class="sidebar-item" data-section="equipment-section">
+                    <span class="icon">🏥</span>
+                    <span>Resources</span>
+                </a>
+                <a href="#alerts" class="sidebar-item" data-section="risk-section">
+                    <span class="icon">⚠️</span>
+                    <span>Alerts</span>
+                </a>
+                <a href="#compliance" class="sidebar-item" data-section="regulations-section">
+                    <span class="icon">📋</span>
+                    <span>Compliance</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Header Section -->
+            <header class="page-header">
+                <div class="header-title">
+                    <h1>Hospital Management Dashboard</h1>
+                    <p>AI-Driven Scheduling & Regulatory Compliance System</p>
+                </div>
+                <div class="header-info">
+                    <span class="date-time" id="datetime"></span>
+                    <button class="btn btn-primary">Generate Schedule</button>
+                </div>
+            </header>
+
+            <!-- Key Metrics -->
+            <section class="metrics-grid" id="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-icon">👨‍⚕️</div>
+                    <div class="metric-content">
+                        <h3>Active Staff</h3>
+                        <p class="metric-value">48</p>
+                        <span class="metric-label">Today</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">⏰</div>
+                    <div class="metric-content">
+                        <h3>Compliance Score</h3>
+                        <p class="metric-value">98.5%</p>
+                        <span class="metric-label">This Month</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">🏥</div>
+                    <div class="metric-content">
+                        <h3>Available Equipment</h3>
+                        <p class="metric-value">156</p>
+                        <span class="metric-label">Tracked Items</span>
+                    </div>
+                </div>
+                <div class="metric-card warning">
+                    <div class="metric-icon">⚠️</div>
+                    <div class="metric-content">
+                        <h3>Active Alerts</h3>
+                        <p class="metric-value">3</p>
+                        <span class="metric-label">Require Attention</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Schedule Section -->
+            <section class="schedule-section" id="schedule-section">
+                <div class="section-header">
+                    <h2>Weekly Schedule Overview</h2>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All Departments</button>
+                        <button class="filter-btn" data-filter="er">Emergency</button>
+                        <button class="filter-btn" data-filter="icu">ICU</button>
+                        <button class="filter-btn" data-filter="surgery">Surgery</button>
+                    </div>
+                </div>
+                
+                <!-- Schedule Legend -->
+                <div class="schedule-legend">
+                    <div class="legend-info">
+                        <h3>ℹ️ Schedule Information</h3>
+                        <p><strong>Staff Count:</strong> Number of medical professionals assigned to each department for that day</p>
+                        <p><strong>Color Codes:</strong></p>
+                        <ul class="legend-list">
+                            <li><span class="legend-badge low"></span> <strong>Low (3-4):</strong> Minimum staffing level</li>
+                            <li><span class="legend-badge medium"></span> <strong>Medium (5-7):</strong> Standard staffing level</li>
+                            <li><span class="legend-badge high"></span> <strong>High (8-10):</strong> Peak staffing level</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="schedule-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Department</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                                <th>Saturday</th>
+                                <th>Sunday</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="dept-row er">
+                                <td class="dept-name">Emergency</td>
+                                <td><span class="staff-count">8</span></td>
+                                <td><span class="staff-count">8</span></td>
+                                <td><span class="staff-count">9</span></td>
+                                <td><span class="staff-count">8</span></td>
+                                <td><span class="staff-count">8</span></td>
+                                <td><span class="staff-count">10</span></td>
+                                <td><span class="staff-count">10</span></td>
+                            </tr>
+                            <tr class="dept-row icu">
+                                <td class="dept-name">ICU</td>
+                                <td><span class="staff-count">6</span></td>
+                                <td><span class="staff-count">6</span></td>
+                                <td><span class="staff-count">6</span></td>
+                                <td><span class="staff-count">7</span></td>
+                                <td><span class="staff-count">6</span></td>
+                                <td><span class="staff-count">7</span></td>
+                                <td><span class="staff-count">7</span></td>
+                            </tr>
+                            <tr class="dept-row surgery">
+                                <td class="dept-name">Surgery</td>
+                                <td><span class="staff-count">5</span></td>
+                                <td><span class="staff-count">6</span></td>
+                                <td><span class="staff-count">5</span></td>
+                                <td><span class="staff-count">5</span></td>
+                                <td><span class="staff-count">6</span></td>
+                                <td><span class="staff-count">4</span></td>
+                                <td><span class="staff-count">4</span></td>
+                            </tr>
+                            <tr class="dept-row">
+                                <td class="dept-name">Pharmacy</td>
+                                <td><span class="staff-count">4</span></td>
+                                <td><span class="staff-count">4</span></td>
+                                <td><span class="staff-count">4</span></td>
+                                <td><span class="staff-count">4</span></td>
+                                <td><span class="staff-count">4</span></td>
+                                <td><span class="staff-count">3</span></td>
+                                <td><span class="staff-count">3</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Regulations & Constraints -->
+            <section class="regulations-section" id="regulations-section">
+                <div class="section-header">
+                    <h2>Active Regulations & Constraints</h2>
+                    <button class="violation-details-btn" id="violationDetailsBtn">📋 Violation Details</button>
+                </div>
+                
+                <div class="constraints-grid">
+                    <div class="constraint-card success">
+                        <div class="constraint-header">
+                            <h3>⏱️ Working Hours</h3>
+                            <span class="status-badge success">✓ Compliant</span>
+                        </div>
+                        <ul class="constraint-list">
+                            <li>Weekly Limit: <strong>45 hours</strong></li>
+                            <li>Daily Limit: <strong>11 hours</strong></li>
+                            <li>Annual Overtime: <strong>≤ 270 hours</strong></li>
+                            <li>Night Shifts: <strong>Max 7.5h without consent</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="constraint-card success">
+                        <div class="constraint-header">
+                            <h3>👥 Staffing Requirements</h3>
+                            <span class="status-badge success">✓ Compliant</span>
+                        </div>
+                        <ul class="constraint-list">
+                            <li>ED Doctor 24/7: <strong>✓ Active</strong></li>
+                            <li>Specialist Doctors: <strong>≥ 4 required</strong></li>
+                            <li>Pharmacists: <strong>4+ for night shifts</strong></li>
+                            <li>Chief Physician: <strong>Exempt if 5+ doctors</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="constraint-card success">
+                        <div class="constraint-header">
+                            <h3>🏥 Capacity Management</h3>
+                            <span class="status-badge success">✓ Compliant</span>
+                        </div>
+                        <ul class="constraint-list">
+                            <li>ICU Beds: <strong>≤ 30% of total</strong></li>
+                            <li>Observation Beds: <strong>≤ 25% of total</strong></li>
+                            <li>Free Beds: <strong>≥ 3% reserved</strong></li>
+                            <li>ICU Nurse Ratio: <strong>1 per 3 beds</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="constraint-card warning">
+                        <div class="constraint-header">
+                            <h3>⚠️ Equipment & Resources</h3>
+                            <span class="status-badge warning">⚠ Review Needed</span>
+                        </div>
+                        <ul class="constraint-list">
+                            <li>Stretchers: <strong>✓ Available</strong></li>
+                            <li>Defibrillators: <strong>✓ Ready</strong></li>
+                            <li>Monitors: <strong>✓ 1 per ICU bed</strong></li>
+                            <li>Ambulances: <strong>⚠ 1 needs maintenance</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Staff Details -->
+            <section class="staff-section">
+                <div class="section-header">
+                    <h2>Staff Compliance Details</h2>
+                    <input type="text" class="search-box" placeholder="Search staff...">
+                </div>
+                
+                <!-- Staff Compliance Legend -->
+                <div class="staff-legend">
+                    <div class="legend-info">
+                        <h3>ℹ️ Staff Information</h3>
+                        <p><strong>This Week Hours:</strong> Current hours worked / Weekly limit (45 hours maximum)</p>
+                        <p><strong>Status:</strong> Active = Currently scheduled | Inactive = Off duty</p>
+                        <p><strong>Compliance:</strong></p>
+                        <ul class="legend-list">
+                            <li><span class="legend-badge good"></span> <strong>Good (96-100%):</strong> Full compliance</li>
+                            <li><span class="legend-badge warning"></span> <strong>Warning (85-95%):</strong> Minor deviations</li>
+                            <li><span class="legend-badge critical"></span> <strong>Critical (<85%):</strong> Requires attention</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="staff-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Department</th>
+                                <th>This Week Hours</th>
+                                <th>Status</th>
+                                <th>Compliance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Dr. Ali Yılmaz</td>
+                                <td>Emergency Doctor</td>
+                                <td>Emergency</td>
+                                <td>42/45</td>
+                                <td><span class="status-active">✓ Active</span></td>
+                                <td><span class="compliance-good">98%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Nurse Ayşe Kara</td>
+                                <td>Head Nurse</td>
+                                <td>ICU</td>
+                                <td>40/45</td>
+                                <td><span class="status-active">✓ Active</span></td>
+                                <td><span class="compliance-good">100%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Dr. Mehmet Şahin</td>
+                                <td>Specialist</td>
+                                <td>Surgery</td>
+                                <td>38/45</td>
+                                <td><span class="status-active">✓ Active</span></td>
+                                <td><span class="compliance-good">99%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Pharmacist Zeynep Demir</td>
+                                <td>Senior Pharmacist</td>
+                                <td>Pharmacy</td>
+                                <td>44/45</td>
+                                <td><span class="status-active">✓ Active</span></td>
+                                <td><span class="compliance-warning">95%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Technician Hasan Çetin</td>
+                                <td>Medical Technician</td>
+                                <td>ICU</td>
+                                <td>41/45</td>
+                                <td><span class="status-active">✓ Active</span></td>
+                                <td><span class="compliance-good">97%</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Risk Management -->
+            <section class="risk-section" id="risk-section">
+                <div class="section-header">
+                    <h2>Real-Time Risk Management & Alerts</h2>
+                </div>
+                
+                <div class="alerts-container">
+                    <div class="alert-item alert-high" data-alert-id="1" data-alert-type="aggression">
+                        <span class="alert-icon">🚨</span>
+                        <div class="alert-content">
+                            <h4>High Aggression Risk Detected</h4>
+                            <p>Department: Emergency Room</p>
+                            <p>Action: Additional security staff redirected</p>
+                            <span class="alert-time">2 minutes ago</span>
+                        </div>
+                        <button class="btn-small alert-btn-details" data-alert-id="1">View Details</button>
+                    </div>
+
+                    <div class="alert-item alert-medium" data-alert-id="2" data-alert-type="maintenance">
+                        <span class="alert-icon">⚠️</span>
+                        <div class="alert-content">
+                            <h4>Equipment Maintenance Due</h4>
+                            <p>Resource: Ambulance #3</p>
+                            <p>Action: Scheduled for maintenance tomorrow at 10:00</p>
+                            <span class="alert-time">15 minutes ago</span>
+                        </div>
+                        <button class="btn-small alert-btn-reschedule" data-alert-id="2">Reschedule</button>
+                    </div>
+
+                    <div class="alert-item alert-low" data-alert-id="3" data-alert-type="shift">
+                        <span class="alert-icon">ℹ️</span>
+                        <div class="alert-content">
+                            <h4>Staff Shift Upcoming</h4>
+                            <p>Dr. Fatima Abbas - Emergency Dept.</p>
+                            <p>Shift starts in 30 minutes</p>
+                            <span class="alert-time">30 minutes ago</span>
+                        </div>
+                        <button class="btn-small alert-btn-notify" data-alert-id="3">Notify</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RFID Equipment Tracking -->
+            <section class="equipment-section" id="equipment-section">
+                <div class="section-header">
+                    <h2>RFID Equipment Tracking</h2>
+                    <select class="equipment-filter">
+                        <option>All Equipment</option>
+                        <option>Stretchers</option>
+                        <option>Wheelchairs</option>
+                        <option>Monitors</option>
+                        <option>Defibrillators</option>
+                    </select>
+                </div>
+                
+                <div class="equipment-grid">
+                    <div class="equipment-card">
+                        <div class="equipment-header">
+                            <h3>🚑 Stretcher #S-001</h3>
+                            <span class="equipment-status available">Available</span>
+                        </div>
+                        <p><strong>Location:</strong> Floor 2 - ICU</p>
+                        <p><strong>Last Updated:</strong> Just now</p>
+                        <p><strong>Status:</strong> Operational</p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <div class="equipment-header">
+                            <h3>🏥 Wheelchair #W-042</h3>
+                            <span class="equipment-status in-use">In Use</span>
+                        </div>
+                        <p><strong>Location:</strong> Emergency Dept.</p>
+                        <p><strong>Last Updated:</strong> 2 minutes ago</p>
+                        <p><strong>Status:</strong> In Transit</p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <div class="equipment-header">
+                            <h3>📊 Monitor #M-015</h3>
+                            <span class="equipment-status available">Available</span>
+                        </div>
+                        <p><strong>Location:</strong> Surgery Room 3</p>
+                        <p><strong>Last Updated:</strong> 5 minutes ago</p>
+                        <p><strong>Status:</strong> Operational</p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <div class="equipment-header">
+                            <h3>⚡ Defibrillator #D-007</h3>
+                            <span class="equipment-status maintenance">Maintenance</span>
+                        </div>
+                        <p><strong>Location:</strong> Service Center</p>
+                        <p><strong>Last Updated:</strong> 1 hour ago</p>
+                        <p><strong>Status:</strong> Under Maintenance</p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <div class="equipment-header">
+                            <h3>🚑 Ambulance #A-001</h3>
+                            <span class="equipment-status available">Available</span>
+                        </div>
+                        <p><strong>Location:</strong> Parking Area</p>
+                        <p><strong>Last Updated:</strong> Just now</p>
+                        <p><strong>Status:</strong> Ready for Dispatch</p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <div class="equipment-header">
+                            <h3>📊 Monitor #M-023</h3>
+                            <span class="equipment-status available">Available</span>
+                        </div>
+                        <p><strong>Location:</strong> ICU Bed 5</p>
+                        <p><strong>Last Updated:</strong> Just now</p>
+                        <p><strong>Status:</strong> Connected</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics -->
+            <section class="analytics-section">
+                <div class="section-header">
+                    <h2>Performance Analytics</h2>
+                </div>
+                
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3>Compliance Trend</h3>
+                        <div class="chart-placeholder">
+                            <svg viewBox="0 0 300 150" style="width: 100%;">
+                                <polyline points="20,130 50,90 80,110 110,70 140,80 170,50 200,60 230,40 260,50" 
+                                          stroke="#4CAF50" stroke-width="2" fill="none"/>
+                                <line x1="20" y1="130" x2="260" y2="130" stroke="#ccc" stroke-width="1"/>
+                            </svg>
+                        </div>
+                        <p style="text-align: center; color: #4CAF50; font-weight: bold;">↑ 98.5% Average</p>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>Staff Utilization</h3>
+                        <div class="utilization-bars">
+                            <div class="bar-item">
+                                <label>Emergency</label>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 88%;">88%</div>
+                                </div>
+                            </div>
+                            <div class="bar-item">
+                                <label>ICU</label>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 92%;">92%</div>
+                                </div>
+                            </div>
+                            <div class="bar-item">
+                                <label>Surgery</label>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 76%;">76%</div>
+                                </div>
+                            </div>
+                            <div class="bar-item">
+                                <label>Pharmacy</label>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 85%;">85%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>Equipment Status</h3>
+                        <div class="status-pie">
+                            <div class="pie-stat">
+                                <span class="pie-label">Available</span>
+                                <span class="pie-value">142 (91%)</span>
+                            </div>
+                            <div class="pie-stat">
+                                <span class="pie-label">In Use</span>
+                                <span class="pie-value">12 (8%)</span>
+                            </div>
+                            <div class="pie-stat">
+                                <span class="pie-label">Maintenance</span>
+                                <span class="pie-value">2 (1%)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="page-footer">
+                <p>RegBridge © 2024 - AI-Driven Hospital Management System | FENG 497 Project</p>
+                <p>Last Updated: <span id="footer-time"></span></p>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Alert Details Modal -->
+    <div id="alertModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header" id="alertModalHeader">
+                <h2>⚠️ Alert Details</h2>
+                <button class="modal-close" id="closeAlertModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="alertModalBody"></div>
+            </div>
+            <div class="modal-footer">
+                <div id="alertModalActions"></div>
+                <button class="btn-secondary" id="closeAlertBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notificationToast" class="notification-toast"></div>
+
+    <!-- Violation Details Modal -->
+    <div id="violationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📋 Regulation Violation Details</h2>
+                <button class="modal-close" id="closeViolationModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="violations-list" id="violationsList"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="closeViolationBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

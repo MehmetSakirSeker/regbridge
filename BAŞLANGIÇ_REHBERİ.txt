@@ -1,0 +1,346 @@
+<!-- BAŞLANGIÇ REHBERİ / GETTING STARTED -->
+
+# RegBridge Mock UI - Başlangıç Rehberi
+
+## 🎉 Hoş Geldiniz!
+
+RegBridge'in modern, etkileşimli dashboard'unu öğrenmek için bu rehberi takip edin.
+
+## ⚡ Hızlı Başlangıç (2 Adım)
+
+### Adım 1: Dosyaları Hazırla
+Aşağıdaki dosyaların aynı klasörde olduğundan emin ol:
+- ✅ `index.html`
+- ✅ `styles.css`
+- ✅ `script.js`
+
+### Adım 2: Aç ve Çalıştır
+**Seçenek A (En Kolay):**
+- `index.html` dosyasına çift tıkla
+- Tarayıcında açılacak!
+
+**Seçenek B (Önerilen - Yerel Sunucu):**
+
+**Windows (PowerShell):**
+```powershell
+# Python ile
+python -m http.server 8000
+
+# Ardından: http://localhost:8000 adresine git
+```
+
+**Mac/Linux:**
+```bash
+# Python 3 ile
+python3 -m http.server 8000
+
+# Ardından: http://localhost:8000 adresine git
+```
+
+## 🎨 Arayüzü Keşfet
+
+### 1️⃣ Üst Navigasyon Barı
+- **Logo**: RegBridge ana sayfa
+- **Menü**: Dashboard, Çizelge, Ekipman, Kurallar, Analitik, Ayarlar
+- **Profil**: Giriş yapan kullanıcı bilgisi
+
+### 2️⃣ Sol Kenar Çubuğu (Sidebar)
+Hızlı erişim menüsü:
+- 📊 **Genel Bakış**: Sistem özeti
+- 👥 **Personel Çizelgesi**: İş çizelgeleri
+- 🏥 **Kaynaklar**: Ekipman yönetimi
+- ⚠️ **Uyarılar**: Sistem bildirimleri
+- 📋 **Uygunluk**: Yasal durumu
+
+### 3️⃣ Ana Şekiller
+
+#### Metrik Kartları (Üstte)
+- 👨‍⚕️ Aktif Personel: 48 kişi
+- ⏰ Uygunluk Puanı: 98.5%
+- 🏥 Mevcut Ekipman: 156 ürün
+- ⚠️ Aktif Uyarılar: 3 adet
+
+#### Haftalık Çizelge
+| Dept. | Pzt | Salı | Çar | Per | Cum | Cmt | Paz |
+|-------|-----|------|-----|-----|-----|-----|-----|
+| Acil | 8 | 8 | 9 | 8 | 8 | 10 | 10 |
+| YBÜ | 6 | 6 | 6 | 7 | 6 | 7 | 7 |
+
+**Filtreleme Butonları:** Departman seç ve çizelge güncellenecek!
+
+#### Yasal Kısıtlamalar
+4 ana kategori:
+1. **Çalışma Saatleri** ✅ Uygun
+2. **Personel Gereksinimleri** ✅ Uygun
+3. **Kapasite Yönetimi** ✅ Uygun
+4. **Ekipman & Kaynaklar** ⚠️ Gözden Geçir
+
+#### RFID Ekipman Takibi
+Her ekipman için:
+- 📍 **Konum**: Hassas GPS konumu
+- 🔄 **Durum**: Mevcut/Kullanımda/Bakımda
+- ⏱️ **Son Güncelleme**: Gerçek zamanlı
+- 💾 **Bilgi**: Durumu ve özellikleri
+
+#### Risk Yönetimi Uyarıları
+Üç seviye:
+- 🚨 **Kritik (Kırmızı)**: Acil eylem gerekli
+- ⚠️ **Orta (Turuncu)**: İnceleme gerekli
+- ℹ️ **Bilgi (Mavi)**: Faydalı haber
+
+## 🎯 Ana İşlemler
+
+### 1. Program Filtrele
+```
+Haftalık Çizelge Genel Bakış → Filtre Butonları
+[Tüm Departmanlar] [Acil] [YBÜ] [Cerrahi]
+↓
+Tıkla ve çizelge otomatik güncellenecek!
+```
+
+### 2. Personel Ara
+```
+Personel Uygunluk Detayları → Arama Kutusu
+"Ayşe" yazıp Enter
+↓
+Sadece Ayşe Kara görüntülenecek
+```
+
+### 3. Ekipman Filtrele
+```
+RFID Ekipman Takibi → Dropdown Menü
+"Tüm Ekipman" → "Tıbbi Monitörler"
+↓
+Sadece monitörler gösterilecek
+```
+
+### 4. Program Oluştur
+```
+Sağ Üst Köşe → "Program Oluştur" Butonu
+↓
+Sistem yeni uygun program yaratacak
+Bildirim: "Program başarıyla oluşturuldu!"
+```
+
+## 📊 Verileri Anlama
+
+### Uygunluk Puanı (98.5%)
+**Ne demek?** 100 puandan 98.5'i yasal kurallara uyum sağlıyor.
+- 95%+ = İyi
+- 90-95% = Kabul edilebilir
+- <90% = Dikkat gerekli
+
+### Personel Statüsü
+| Statü | Anlam | Renk |
+|-------|-------|------|
+| ✓ Aktif | Çalışıyor | Yeşil |
+| ⏸️ İzin | Raporlu | Gri |
+| ❌ Yoklama | Gelmedi | Kırmızı |
+
+### Ekipman Durumu
+| Durum | Anlam |
+|-------|-------|
+| 🟢 Mevcut | Hazır ve kullanılabilir |
+| 🔵 Kullanımda | Şu an kullanılan |
+| 🟠 Bakımda | Bakım altında |
+
+## 🔐 Yasal Kurallar (Özet)
+
+Sistem otomatik olarak kontrol ediyor:
+
+✅ **Çalışma Saatleri**
+- Haftada max 45 saat
+- Günde max 11 saat
+- Yılda max 270 saat fazla mesai
+- Gecelik vardiyalar kontrollü
+
+✅ **Personel Dağılımı**
+- Acil Servis 24/7 doktor
+- Min 4 uzman doktor
+- Yeterli eczacı
+- Nitelikli başhekim
+
+✅ **Kapasite Limitleri**
+- YBÜ: Max %30 yataklardan
+- Gözlem: Max %25 yataklardan
+- Ücretsiz: Min %3 yataklardan
+
+✅ **Ekipman Gereksinimleri**
+- Ambulans: Min 1 tane
+- Defibrilatör: Acil Serviste
+- Monitör: Her YBÜ yatağında
+- Tüm takip edilmiş
+
+## 🎨 Renkler ve Anlamları
+
+| Renk | Anlam | Örnek |
+|------|-------|--------|
+| 🔵 Mavi | Birincil işlemler | "Program Oluştur" butonu |
+| 🟢 Yeşil | Başarı/Uygun | Uygunluk Puanı |
+| 🟠 Turuncu | Uyarı/Dikkat | Bakıma muhtaç ekipman |
+| 🔴 Kırmızı | Hata/Kritik | Yapılması gereken işlem |
+| ⚪ Gri | Bilgi/Tarafsız | Detay bilgiler |
+
+## 💬 Popup Mesajlar
+
+Sistem sırasında bildirim gösterecek:
+
+```
+✓ "Program başarıyla oluşturuldu!"         [Yeşil]
+⚠️ "Ekipman bakımı zamanlandı"            [Turuncu]
+ℹ️ "Vardiya başlaması 30 dakika kaldı"    [Mavi]
+❌ "Hata: İşlem başarısız"                 [Kırmızı]
+```
+
+Mesaj 3 saniye sonra otomatik kapanır.
+
+## 🔍 İleri Özellikler
+
+### Sidebar Etkileşimi
+```
+Sidebar'da "Personel Çizelgesi" → Menü vurgulanır
+İlgili bölüme scroll yapıyor (gelecek versiyonda)
+```
+
+### Tablo Satırı Hover
+```
+Personel tablosunda satıra gel → Satır vurgulanır
+Detayları daha kolay okumanız için
+```
+
+### Gerçek Zamanlı Saat
+```
+Sağ üstte yer alan tarih/saat
+Her saniye otomatik güncellenir
+Sistem zamanına uyumlu kalır
+```
+
+### Ekipman Sürüklemesi
+```
+Ekipman kartları → Düzenli güncelleniyor
+Her 10 saniyede status değişebiliyor
+Gerçek zamanlı RFID simülasyonu
+```
+
+## 📱 Mobil Cihazlarda
+
+Dashboard tamamen duyarlıdır:
+
+**Telefonda:**
+- Sidebar gizlenir (alandaki kaydırma yok)
+- Kartlar yığılır (1 sütun)
+- Yazı boyutu uyarlanır
+- Dokunma uyumlu butonlar
+
+**Tablette:**
+- Sidebar görünür
+- 2 sütunlu kart düzeni
+- Daha dar açı
+
+## ❌ Sorunlar ve Çözümleri
+
+### Problem: Sayfa boş/yüklenmedi
+**Çözüm:**
+1. Tarayıcıyı yenile (F5)
+2. Ctrl+Shift+Delete → Önbelleği temizle
+3. Dosyaların aynı klasörde olduğunu kontrol et
+
+### Problem: Butonlar çalışmıyor
+**Çözüm:**
+1. F12 → Console sekme aç
+2. Hata mesajını oku
+3. `script.js` dosyasını kontrol et
+4. Sayfayı yenile
+
+### Problem: Renkler yanlış
+**Çözüm:**
+1. Tarayıcı önbelleğini temizle
+2. Ctrl+Shift+R (tam yenileme)
+3. CSS dosyasının yüklü olduğunu kontrol et
+
+### Problem: Filtreleme çalışmıyor
+**Çözüm:**
+1. Sayfayı yenile
+2. JavaScript konsolunda `RegBridge.filterScheduleByDepartment('all')` çalıştır
+3. Sonuç görülürse script çalışıyor demektir
+
+## 🎓 Öğrenme Hedefleri
+
+Bu mock UI ile:
+- ✅ Modern dashboard tasarımını öğrendin
+- ✅ Yasal uygunluk yönetimini anladın
+- ✅ Gerçek zamanlı veri takibini gördün
+- ✅ Etkileşimli arayüzü denemedin
+- ✅ HTML/CSS/JS entegrasyonunu keşfettin
+
+## 🔧 Ileri Özelleştirme
+
+### Renk Değiştir (styles.css)
+```css
+:root {
+    --primary-color: #1e88e5;  /* BURADAN DEĞİŞTİR */
+    --secondary-color: #43a047;
+    --warning-color: #fb8c00;
+}
+```
+
+### Personel Ekle (index.html)
+```html
+<tr>
+    <td>Yeni Personel Adı</td>
+    <td>Ünvanı</td>
+    <td>Departmanı</td>
+    <td>35/45</td>
+    <td><span class="status-active">✓ Aktif</span></td>
+    <td><span class="compliance-good">97%</span></td>
+</tr>
+```
+
+### JavaScript Konsol Testleri
+```javascript
+// RegBridge nesnesi kontrol et
+console.log(RegBridge);
+
+// Uygunluk puanını al
+RegBridge.performanceMetrics.getComplianceScore();
+
+// Departman filtresi
+RegBridge.filterScheduleByDepartment('er');
+
+// Bildirim göster
+RegBridge.showNotification('Test mesajı!', 'success');
+```
+
+## 📞 Destek ve Sorular
+
+1. **README.md** - Teknik dokümantasyon
+2. **FINAL_REPORT.txt** - Projenin tam raporu
+3. **HTML Açıklamalar** - index.html'de yorum satırları
+4. **CSS Değişkenleri** - styles.css'de renkler ve değerler
+
+## 🎉 Başarılı Girişe Dair Kontrol Listesi
+
+- [ ] Dosyalar aynı klasörde
+- [ ] `index.html` tarayıcıda açıldı
+- [ ] Renkleri görebildiğim
+- [ ] Butonlara tıklabildim
+- [ ] Filtreleme çalıştı
+- [ ] Arama kutusuna yazabildim
+- [ ] Dropdown menüyü açabildim
+- [ ] Uyarıları gördüm
+- [ ] Saat otomatik güncellendi
+- [ ] Başarılı! 🎊
+
+## 📚 Sonraki Adımlar
+
+1. **Derinlemesine Keşif**: README.md dosyasını oku
+2. **Kod İnceleme**: HTML/CSS/JS dosyalarını aç
+3. **Raporu Oku**: FINAL_REPORT.txt'i incele
+4. **Özelleştir**: Kendi versiyonunu oluştur
+5. **Geliştir**: Yeni özellikler ekle
+
+---
+
+**Hoş kullandın! RegBridge sisteminin modern arayüzünü keşfetme yolculuğunu başarıyla tamamladın.** 🚀
+
+*Sorularının varsa, dosyalardaki açıklamaları kontrol et veya JavaScript konsolunu aç (F12).*

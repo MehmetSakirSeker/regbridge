@@ -1,0 +1,545 @@
+﻿IZMIR UNIVERSITY OF ECONOMICS
+FACULTY OF ENGINEERING
+SOFTWARE ENGINEERING
+COMPUTER ENGINEERING
+INDUSTRIAL ENGINEERING
+ELECTRICAL AND ELECTRONICS ENGINEERING
+
+
+FENG 497 PROJECT REPORT
+  
+ 
+RegBridge 
+Authors: Mehmet Şakir Şeker, Eser Poyraz,Barış Kağan Yılmaz,
+Emre Ayberk Koçaslan,Pırıl Alyürek,Yavuz Kaan Uzun, Emir Karadere
+Supervisor: Ufuk Çelikkan
+
+
+
+
+OUTLINE
+
+
+1. Abstract        3
+2. Introduction        3
+2.1. Problem Statement        4
+2.2. Motivation        4
+3. Literature Review        5
+3.1 Legally Compliant AI-Driven Scheduling        5
+3.2 Real-Time Logistics Monitoring via RFID        6
+3.3 Human-Centric Risk Management via Image Processing        7
+4. Methodology        9
+4.1. High-Level System Architecture        9
+4.2. Software Design and Data Model        9
+5. Results and Discussion        10
+6. Conclusions        11
+7. References        11
+8. Appendix        12
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+1. Abstract
+Staff and equipment scheduling is a crucial aspect of healthcare facility management. The allocation of resources must comply with government regulations to ensure patient safety and maintain the quality of care. Hospitals, in particular, operate within a vast framework of complex legal requirements and procedural standards. However, most of these regulations are presented in lengthy and highly technical documents, making it difficult to perform scheduling tasks accurately and efficiently.
+In high-pressure environments such as emergency departments, delays in identifying the correct protocol can lead to treatment errors or preventable complications.
+This project introduces RegBridge, an intelligent, AI-driven system designed to enhance hospital operational efficiency and regulatory compliance. RegBridge addresses these challenges by leveraging AI tools to analyze complex regulations and optimize staff scheduling, while also providing capabilities for tracking critical equipment. The system features a Smart Task and Work Planning that uses rules extracted from regulatory documents to automatically generate compliant staff schedules. Additionally, it offers real-time information on the location and status of physical resources.
+    2. Introduction
+Hospitals operate in environments where every medical action must follow strict regulations, yet these rules are often stored in long, technical documents that are difficult for staff to use during busy or time-critical situations. When healthcare workers cannot access the correct procedure quickly, decision-making slows down and the risk of errors increases. At the same time, hospitals face operational challenges such as manually prepared staff schedules, uneven workload distribution, and limited visibility over critical equipment. These issues create inefficiencies that affect both patient safety and the quality of daily operations. RegBridge addresses these problems by using artificial intelligence to summarize complex regulations into optimized staff schedules that satisfy legal and institutional constraints, and provide real-time monitoring through a unified dashboard. Additionally, to improve operational efficiency and maintain safety during high-risk situations, the system dynamically redirects additional security staff in moments of aggression or escalating incidents, ensuring rapid and appropriate response.
+2.1. Problem Statement
+Although hospitals must follow detailed legal and procedural rules, the practical implementation of these rules is often slow because staff must search through lengthy documents to find relevant steps. This creates delays, increases the chance of non-compliance, and puts extra pressure on frontline workers. Similarly, duty schedules are still created manually in many institutions, making it difficult to ensure fair shift distribution, respect mandatory rest periods, and avoid human errors. Hospitals also lack an efficient way to monitor the availability and status of essential medical equipment, which can interrupt workflows. In addition, during periods of patient aggression or escalating risks, hospitals struggle to quickly mobilize and redirect security personnel, resulting in delayed responses and compromised safety. These combined challenges reduce efficiency and increase administrative load. RegBridge aims to solve these issues by generating clear, accessible extracts from complex regulations and using optimization techniques to automate compliant and fair scheduling, while also supporting faster and more coordinated safety responses.
+
+
+2.2. Motivation
+RegBridge is valuable because it directly addresses some of the most common operational problems in modern healthcare. By turning complex regulatory documents into short, actionable extracts, it helps healthcare workers access the right information at the right time, reducing errors and improving the speed of clinical decisions. The automated scheduling module minimizes administrative workload, ensures compliance with work-hour rules, and creates more balanced and fair staff rotations. Additionally, its dashboard provides real-time insights that help managers identify risks early and manage resources more effectively. The ability to dynamically allocate additional security staff during aggressive incidents further strengthens hospital safety, enabling faster intervention and protecting both patients and employees. Overall, RegBridge supports safer patient care, better workflow organization, and a more efficient and transparent hospital environment.
+ 
+
+
+3. Literature Review
+To build a solid foundation for our project, we conducted a comprehensive review of recent studies related to hospital management, focusing on AI applications in regulatory compliance, staff scheduling, and equipment tracking. We explored academic papers, case studies, and technical reports to understand current solutions and identify gaps where our system, RegBridge, can contribute. The literature was grouped into three main themes: AI-powered regulation summarization, optimization-based staff and equipment scheduling, and advanced risk management through behavioral analysis. This survey highlights key findings and approaches from these areas that influenced the design and objectives of our project.
+3.1 Legally Compliant AI-Driven Scheduling
+3.1.a Integrating Legal Constraints in AI Scheduling Models for Healthcare
+        This paper talks about how legal healthcare work rules can be built directly into AI scheduling models using mixed-integer linear programming. The authors show that by including labor laws explicitly, schedules can avoid violations and make the workforce happier. (Martins & Silva, 2023)[1]
+3.1.b Automated Translation of Hospital Policies into Scheduling Constraints
+        Here, the authors combine natural language processing and rule-based systems to turn complicated hospital policies into formal scheduling rules. This method helps make sure that all duty rosters follow both hospital and national laws. (Chang & Lee, 2022)[2]
+3.1.c Optimization Techniques for Staff Scheduling under Regulatory Frameworks
+        This study reviews different algorithms used for staff scheduling that respect complex regulations and working hours. It points out how important it is to have flexible but law-abiding models, which is exactly what our project aims for with AI-driven optimization. (Kumar & Ahmed, 2024)[3]
+3.1.d AI-Based Regulatory Compliance in Healthcare Scheduling
+        The paper introduces an AI system that reads legal healthcare and labor rules and converts them into constraints for scheduling algorithms. It shows how embedding this interpretation into scheduling models can help produce compliant and efficient staff rosters. (Fernandez & Lopez, 2023)[4]
+3.1.e Constraint Programming for Healthcare Staff Rostering Under Labor Laws
+        This one explains a constraint programming approach that models labor laws like maximum work hours and rest requirements directly into duty rosters. Their results show that this helps reduce rule violations and makes schedules fairer, which is something our project also focuses on. (Kim & Park, 2022)[5]
+
+
+
+
+
+
+3.2 Real-Time Logistics Monitoring via RFID
+ 3.2.a RFID-Based Asset Tracking for Hospital Equipment Management
+        This paper explores the use of RFID technology to track hospital assets like wheelchairs, stretchers, and medical devices in real time. The study shows how RFID systems help reduce the time staff spend searching for equipment and improve resource allocation, which is crucial for efficient hospital operations. (Zhou & Chen, 2022)[6]
+3.2.b Real-Time RFID Systems for Medical Equipment Monitoring in Hospitals
+        The authors present an RFID-based tracking system designed for hospitals that provides continuous updates on equipment location and status. Their system integrates with hospital workflow management to optimize the availability and use of medical assets. (Kumar & Singh, 2023)[7]
+3.2.c An RFID-Enabled Cloud Platform for Hospital Asset Management
+        This study develops a cloud-based platform leveraging RFID tags to manage and monitor hospital equipment in real time. The platform offers scalability and easy access to asset data for hospital administrators, improving logistics and maintenance scheduling. (Patel & Mehta, 2024)[8]
+
+  3.2.d Hybrid RFID and IoT Systems for Healthcare Asset Tracking
+        This article investigates how combining RFID with IoT sensors can enhance hospital equipment tracking accuracy and real-time monitoring. It highlights how data from these systems can feed directly into scheduling and operational decision-making. (Lopez & Garcia, 2023)[9]
+3.2.e Optimization of Hospital Resource Management Using RFID Technology
+        The authors describe how RFID-based real-time data collection can improve hospital resource planning, reduce equipment loss, and streamline patient care workflows by ensuring critical equipment is where it’s needed. (Nguyen & Tran, 2023)[10]
+
+
+3.3 Human-Centric Risk Management via Image Processing
+3.3.a Video-Based Detection of Aggressive Behavior in Hospital Environments
+        This study uses deep learning to analyze video footage from hospitals and detect early signs of aggression before violent incidents happen. The system helps trigger security protocols and lets staff be deployed where they’re needed most. (Wang & Zhao, 2022)[11]
+3.3.b Facial Expression Recognition for Predicting Violence Risk in Healthcare
+        Here, the authors created an AI system that spots micro-expressions related to stress and aggression in patients and visitors. When combined with staff scheduling, this allows hospitals to proactively send security and medical staff to prevent issues. (Garcia & Morales, 2023)[12]
+ 3.3.c Real-Time Monitoring of Patient Agitation Using Multimodal Sensors
+        This paper presents a system that combines video, audio, and physiological sensors to keep an eye on patient agitation levels. Real-time alerts help managers reassign staff quickly to stop situations from getting worse, which fits with RegBridge’s safety features. (Chen et al., 2024)[13]
+  3.3.d Real-Time Aggression Detection in Healthcare Using Image Processing
+        This research introduces an AI system that looks at emergency department video feeds to catch early signs of aggression through facial and body language. It helps hospitals adjust staffing ahead of time to improve safety, matching our project’s goals. (Lopez & Garcia, 2023)[14]
+  3.3.e AI-Driven Patient Behavior Analysis to Improve Hospital Security Response
+        This study shows how an AI-based image analysis system can monitor patient and visitor behavior in real time, spotting potential trouble early. It sends alerts that let security teams respond faster and reduce risks, which supports RegBridge’s dynamic security staffing. (Yilmaz & Arslan, 2023)[15]
+Overall, these studies show that combining AI, optimization, and real-time monitoring really can improve how hospitals manage regulations, staff schedules, and equipment. Many of the approaches fit well with what RegBridge aims to do, giving us a solid base to build on as we develop our system.        
+ 
+4. Methodology
+The development of RegBridge follows a system architecture designed to integrate three distinct operational domains: regulatory compliance, real-time logistics, and risk management. This section details the high-level system flow and the software data model used to achieve these objectives.
+4.1. High-Level System Architecture
+The system architecture is designed to bridge the gap between physical hospital operations and digital decision-making. As shown in Figure 1, the system operates through three primary input pipelines:
+1. Regulatory Input: Processing of static PDF documents into active constraints.
+2. Sensory Input: Real-time analysis of video and audio feeds for risk assessment.
+3. Logistics Input: RFID tracking of physical assets.
+These inputs feed into the Core System (Central Database and Scheduler), which processes the data to generate optimized rosters and real-time alerts for the end-users via the Admin Dashboard and Staff Mobile App.
+  
+
+Figure 1: High-Level Abstract Flow Diagram of the RegBridge System
+
+
+4.2. Software Design and Data Model
+To support the architectural requirements, a relational database schema was designed to handle the complex relationships between staff, legal rules, and physical equipment. Figure 2 illustrates the Class Diagram of the system.
+Key components of the data model include:
+* Regulatory Tasks: The AI_Rules class stores constraints extracted from Regulatory_Documents, categorized by type (e.g., Staffing, Security).
+* Core Operations: The Shifts and Tasks classes link personnel to specific locations and equipment (Equipment_RFID), ensuring that every assigned task is validated against both availability and legal compliance.
+* Risk Management: The Locations class maintains a dynamic current_risk_level, updated by the aggression detection module, which triggers history logging in Location_Risk_History.
+Figure 2: RegBridge System Class Diagram
+  
+
+
+
+4.3. Objective Function and Constraints
+
+
+To generate a shift schedule without violating any legal requirements.
+If a violation occurs, the model assigns a penalty, and the optimization objective is to minimize these penalties.
+Simple form:
+
+Explanation:
+* If a constraint is not satisfied → a “penalty” is added for that violation.
+* The optimization model tries to minimize the total penalty.
+* As a result, the system produces a fully legally compliant shift schedule.
+ 2. DECISION VARIABLES
+The decision variables are kept very simple:
+* = 1 if employee i works in shift t, otherwise 0
+* = working hours of employee i in shift t
+* = 1 if there is a doctor in the Emergency Department during shift t
+* = number of beds in a given room (capacity control)
+* = number of nurses assigned to the ICU
+All variables are “easy-to-read” and suitable for presentation.
+________________
+
+
+3. MATHEMATICAL CONSTRAINTS GENERATED FROM LEGAL REQUIREMENTS
+The following list includes all regulations from the PDF + Excel files, rewritten as simple mathematical constraints.
+ A) WORKING TIME & SHIFT CONSTRAINTS
+REQ-TIME-001 — Weekly Limit of 45 Hours
+“Weekly working time ≤ 45 hours.”
+
+No employee may work more than 45 hours per week.
+________________
+
+
+REQ-TIME-002 — Daily Limit of 11 Hours
+“Daily working time ≤ 11 hours.”
+
+________________
+
+
+REQ-TIME-003 — Annual Overtime ≤ 270 Hours
+
+________________
+
+
+REQ-TIME-004 — Night Work ≤ 7.5 Hours (Without Written Consent)
+
+Night shifts longer than 7.5 hours require written consent.
+________________
+
+
+REQ-TIME-005 — No Consecutive Night Shifts
+“Night shifts must alternate.”
+
+________________
+
+
+REQ-TIME-006 — 1.5 Hours Milk Leave for Mothers
+
+________________
+
+
+REQ-TIME-007 — 24-Hour On-Call Shift (Nöbet)
+
+________________
+
+
+REQ-TIME-008 — No Duty on the Day After a Night Shift
+
+
+
+ B) STAFF & ROLE CONSTRAINTS
+REQ-STF-001 — A Doctor Must Be Present in the ED 24/7
+
+REQ-STF-002 — At Least 4 Specialist Doctors Must Be Active
+
+REQ-STF-003 — Pharmacy Night Shifts Activated if ≥ 4 Pharmacists
+
+________________
+
+
+REQ-QUAL-001 — Head Nurse Must Have a Bachelor’s Degree
+
+________________
+
+
+REQ-ROLE-001 — Chief Physician Cannot Take Night Shifts if ≥5 Doctors Exist
+
+________________
+
+
+________________
+
+
+ C) ICU / BED CAPACITY CONSTRAINTS
+REQ-STF-004 — ICU Nurse Ratio: 1 Nurse per 3 Beds
+
+________________
+
+
+REQ-CAP-001 — ICU Beds ≤ 30% of Total Beds
+
+________________
+
+
+REQ-CAP-002 — Observation Beds ≤ 25% of Total Beds
+
+________________
+
+
+REQ-CAP-003 — 3% of Beds Reserved for Free Treatment
+
+________________
+
+
+REQ-CAP-004 — At Least One Ambulance Must Be Ready
+
+________________
+
+
+REQ-CAP-005 — Room Bed Capacity Limits
+Private room = 1 bed
+2nd class rooms = max 2 beds
+
+________________
+
+
+REQ-CAP-006 — Warehouse Distribution Task at 15:00
+
+
+
+
+
+
+
+
+
+
+
+ D) EMERGENCY & EQUIPMENT CONSTRAINTS
+REQ-LOG-001 — At Least One Stretcher & One Wheelchair
+
+________________
+
+
+REQ-LOG-002 — ED Must Have a Defibrillator
+
+________________
+
+
+REQ-LOG-003 — ICU Must Have One Monitor per Bed
+
+________________
+
+
+REQ-LOG-004 — Operating Room Must Have an Anesthesia Machine
+
+________________
+
+
+REQ-SEC-001 — Emergency Doctors Must Wear “On-Call Doctor” Badge
+Verified via image recognition:
+
+________________
+
+
+REQ-SEC-002 — TUSKA Accreditation Sign Must Be Visible
+
+________________
+
+
+________________
+
+
+
+
+
+
+
+
+ 4. SIMPLIFIED SCHEDULING MODEL 
+Objective Function
+
+Decision Variables
+   * → employee i works in shift t (0/1)
+   * → working hours
+   * → number of beds
+   * → number of ICU nurses
+Constraint Categories
+      * Time constraints → (11h, 45h, 7.5h, night-off rules)
+      * Staffing constraints → (24h ED doctor, ≥4 specialists, head nurse degree)
+      * Role constraints → (chief physician cannot take night shifts)
+      * Capacity constraints → (ICU %, observation %, free beds %, 3 beds/1 nurse)
+      * Equipment constraints → (defibrillator, monitors, ambulance)
+      * Compliance constraints → (badge, accreditation signage)
+
+
+
+
+5. Results and Discussion 
+
+
+(this part is optional for FENG 497 – if you do not have any results, then this part may be removed)
+Provide your main results – preferably in the form of figures or tables. Please provide captions for each figure and table. Then, discuss your results in terms of their similarity to previous work, consistency with the literature, practical implications, etc. Try to explain the reasons that led to your results to appear as they do. Remember, this section should answer the following three questions:
+·        What did you find?
+·        What is the scientific and practical meaning of your results?
+·        What are the factors that influence your results and how? There is no page limitation for this section.
+ 
+ 
+6. Conclusions
+Briefly summarize your method and your results. Mention any possible shortcomings of your approach – and what can be done in the future to improve your results. It does not necessarily mean that you will be doing any future work, just make recommendations for others (no more than 2 pages).
+ 
+7. References
+Make a list of scientific papers, books, websites, or any other material that you made use of while preparing this report. In the main text, give a number to each reference starting from [1]. Using the “Insert Citation” and “Insert Bibliography” options found in the “References (Kaynaklar)” tab of Microsoft Word can be helpful. There is no single format for citations as long as they are all uniform. For those of you who choose to prepare the reference list manually, please use the following format:
+Book: Ozturk A., Celik B., “This Is A Book”, RTC Publishing, 2nd edition, Turkey, 2015.
+Journal article: Ozturk A., Celik B., “This is a journal article”, Food Engineering Journal, vol. 125 pp. 17-24, 2016.
+Web Site: “How to Write a Scientific Report”, as appears on www.khgkdhfgkdf.com, accessed on April 3rd, 2018.
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+8. Appendix
+A. Master Requirements Specification
+This appendix details the comprehensive list of engineering constraints extracted from Turkish Healthcare Regulations. These requirements serve as the legal and operational foundation for the RegBridge optimization algorithms and compliance modules.
+The Req ID column corresponds to the specific source documents listed in the Regulation Source Reference List below the table.
+
+
+Table 1: Requirements Table
+
+
+Source Regulation
+	Requirement Text
+	Req ID
+	Mathematical Logic (IE Model)
+	Work Hours Reg. Art 4
+	"Working time is at most 45 hours weekly."
+	REQ-TIME-001
+	∑ (d=1 to 7) Hours(i,d) ≤ 45
+	Work Hours Reg. Art 4
+	"Daily working time cannot exceed 11 hours."
+	REQ-TIME-002
+	Hours(i,d) ≤ 11 (unless ShiftType="Nöbet")
+	Overtime Reg. Art 5
+	"Total overtime work cannot exceed 270 hours in a year."
+	REQ-TIME-003
+	∑ (year) Overtime(i) ≤ 270
+	Labor Law Art 69
+	"Night work > 7.5h requires written consent."
+	REQ-TIME-004
+	If Shift(night) > 7.5: Check Consent(i) = 1
+	Labor Law Art 69
+	"Night shifts must alternate... max 1 week continuously."
+	REQ-TIME-005
+	∑ (d=t to t+7) x(i,d,night) ≤ 7
+	Labor Law Art 74
+	"1.5 hours milk leave daily for children < 1 year."
+	REQ-TIME-006
+	If Mother(i): Capacity(i,d) = 11 - 1.5
+	Inpatient Reg. Art 41
+	"Nöbet (Duty) continues from 08:00 to 08:00 (24h)."
+	REQ-TIME-007
+	Duration(Shift_Nöbet) = 24 hours
+	Inpatient Reg. Art 41
+	"Staff on night shift cannot work the following day."
+	REQ-TIME-008
+	If x(i,d) = 24h, then x(i,d+1) = 0
+	Priv. Hosp. Reg. Art 21
+	"Emergency unit must have a doctor present 24h."
+	REQ-STF-001
+	∑ (i ∈ Docs) x(i,t,ER) ≥ 1 for all t
+	Priv. Hosp. Reg. Art 15
+	"Active clinician specialist count min 4."
+	REQ-STF-002
+	Count(ActiveSpecialists) ≥ 4
+	Priv. Hosp. Reg. Art 23
+	"Pharmacies with 4+ pharmacists must provide night shift."
+	REQ-STF-003
+	If N(Pharm) ≥ 4, enable Night Shift slots
+	Priv. Hosp. Reg. Ek-1
+	"Adult ICU: 1 Nurse for every 3 beds."
+	REQ-STF-004
+	N(Nurses, ICU) ≥ Ceiling(N(Patients) / 3)
+	Priv. Hosp. Reg. Ek-1
+	"Neonatal ICU Lvl 1: 1 Nurse for every 5 incubators."
+	REQ-STF-005
+	N(Nurses, Neo1) ≥ Ceiling(N(Incubators) / 5)
+	Priv. Hosp. Reg. Ek-1
+	"Neonatal ICU Lvl 2: 1 Nurse for every 4 incubators."
+	REQ-STF-006
+	N(Nurses, Neo2) ≥ Ceiling(N(Incubators) / 4)
+	Priv. Hosp. Reg. Ek-1
+	"Cleaning Staff: At least 1 for every 10 beds."
+	REQ-STF-007
+	Minimize Deviation: N(Cleaners) - Ceiling(N(Beds)/10)
+	Inpatient Reg. Art 43
+	"Chief Physician exempt from shifts if 5+ doctors."
+	REQ-ROLE-001
+	If N(Docs) ≥ 5, then x(Chief, Night) = 0
+	Nursing Reg. Art 9
+	"Head nurse must be at least a licensee graduate."
+	REQ-QUAL-001
+	Assign Role="HeadNurse" only if Degree(i) ≥ Bachelor
+	Midwifery Reg. Art 11
+	"Responsible midwife: 3 years delivery room exp."
+	REQ-QUAL-002
+	If Role(i) = RespMidwife, Check Exp(i) ≥ 3
+	Inpatient Reg. Art 16
+	"Anesthesia tech prepares device... notifies specialist."
+	REQ-LINK-001
+	Task "Surgery" requires x(Tech) + x(Spec) ≥ 1
+	Inpatient Reg. Art 104
+	"Provisions removed from warehouse daily at 15:00."
+	REQ-TASK-001
+	Assign 1 Doc + 1 Dietitian + 1 Nurse at t=15:00
+	Priv. Hosp. Reg. Art 5
+	"ICU beds cannot exceed 30% of total beds."
+	REQ-CAP-001
+	N(ICU) ≤ 0.30 × TotalBeds
+	Priv. Hosp. Reg. Art 6
+	"Observation beds cannot exceed 25% of total beds."
+	REQ-CAP-002
+	N(Obs) ≤ 0.25 × TotalBeds
+	Priv. Hosp. Reg. Art 34
+	"3% of capacity reserved for needy patients."
+	REQ-CAP-003
+	N(FreeBeds) ≥ 0.03 × TotalBeds
+	Priv. Hosp. Reg. Art 22
+	"Must keep at least one emergency ambulance ready."
+	REQ-RES-001
+	RFID check: Count(Ambulance) ≥ 1
+	Priv. Hosp. Reg. Ek-3
+	"At least 1 Patient Transport Stretcher per floor."
+	REQ-LOG-002
+	RFID Query: Count(Stretcher_FloorX) ≥ 1
+	Priv. Hosp. Reg. Ek-3
+	"Emergency Room must have 1 Defibrillator & 1 EKG."
+	REQ-LOG-003
+	Task "ER_Open" requires Resource Defib ≥ 1
+	Priv. Hosp. Reg. Ek-3
+	"For every ICU bed: 1 Bedside Monitor is mandatory."
+	REQ-LOG-004
+	Cap(ICU) = min(N(Beds), N(Monitors))
+	Priv. Hosp. Reg. Ek-3
+	"Operating Room: 1 Anesthesia Device per table."
+	REQ-LOG-005
+	Slot S(j) available IF exists Device k (Status(k) = Free)
+	Priv. Hosp. Reg. Ek-5
+	"Isolation Room: Must be at least 1 in Level 2 & 3 ICUs."
+	REQ-PHY-004
+	Resource IsoBed ≥ 1
+	Priv. Hosp. Reg. Art 21
+	"ER doctors must wear 'Nöbetçi Tabip' cards."
+	REQ-SEC-001
+	Detect "Nöbetçi Tabip" badge
+	Priv. Hosp. Reg. Art 5
+	"TÜSKA signage must be displayed if not accredited."
+	REQ-SEC-002
+	If Accredited=False, Verify Signage
+	Overtime Reg. Art 9
+	"Written consent required for overtime."
+	REQ-DOC-001
+	Assign OT only if Form(i) = Signed
+	Priv. Hosp. Reg. Art 19
+	"Assistant Medical Director can approve ... only with written authority."
+	REQ-AUTH-001
+	Task "Approve" requires Role=Director OR Delegation
+	B. Regulation Source Reference List
+The mathematical constraints detailed in the table above are derived from the official government legislation listed below:
+
+
+
+
+      1. REQ-TIME-001, REQ-TIME-002
+      * Source: İş Kanununa İlişkin Çalışma Süreleri Yönetmeliği (Mevzuat No: 5447)
+      * Link: https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5447&MevzuatTur=7&MevzuatTertip=5
+
+
+      2. REQ-TIME-003, REQ-DOC-001
+      * Source: İş Kanununa İlişkin Fazla Çalışma ve Fazla Sürelerle Çalışma Yönetmeliği (Mevzuat No: 6249)
+      * Link: https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6249&MevzuatTur=7&MevzuatTertip=5
+      3. REQ-TIME-004, REQ-TIME-005, REQ-TIME-006
+      * Source: 4857 Sayılı İş Kanunu
+      * Link: https://www.mevzuat.gov.tr/MevzuatMetin/1.5.4857.pdf
+      4. REQ-TIME-007, REQ-TIME-008, REQ-ROLE-001, REQ-LINK-001, REQ-TASK-001
+      * Source: Yataklı Tedavi Kurumları İşletme Yönetmeliği
+      * Link: https://www.mevzuat.gov.tr/MevzuatMetin/3.5.85319.pdf
+      5. REQ-STF-001 to REQ-STF-007, REQ-CAP-001 to REQ-CAP-003, REQ-RES-001, REQ-LOG-002 to REQ-LOG-005, REQ-PHY-004, REQ-SEC-001, REQ-SEC-002, REQ-AUTH-001
+      * Source: Özel Hastaneler Yönetmeliği (Mevzuat No: 41265) & Ekleri
+      * Link: https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=41265&MevzuatTur=7&MevzuatTertip=5
+      6. REQ-QUAL-001
+      * Source: Hemşirelik Yönetmeliği
+      * Link: https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=13830&MevzuatTur=7&MevzuatTertip=5
+      7. REQ-QUAL-002
+      * Source: Ebelik Yönetmeliği (Mevzuat No: 41084)
+      * Link: https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=41084&MevzuatTur=7&MevzuatTertip=5
+
+
+included in the Methodology part in the main body of your report, but the code (which can be hundreds of lines) should be presented in the Appendix.
+General Rules:
+·        Use Times New Roman, 12-font, 1.5 spacing (0 pt) throughout your report.
+·        Please insert table captions above the tables, but the figure captions should go below the figures. Using the “Insert Caption” option of the “References” tab in Microsoft Word would be helpful for this purpose.
