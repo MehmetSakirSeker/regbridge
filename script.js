@@ -36,11 +36,23 @@ const regulationViolations = [
         },
         attachments: [
             {
+                title: 'Worker Safety Guidelines',
+                url: 'docs/worker_safety.html',
+                anchors: {
+                    'Worker Safety': 'safety-1'
+                }
+            },
+            {
+                title: 'Patient Care Standards',
+                url: 'docs/patient_care.html',
+                anchors: {
+                    'Patient Care Quality': 'rest-req'
+                }
+            },
+            {
                 title: 'İş Kanunu',
                 url: 'docs/iskanunu.html',
                 anchors: {
-                    'Worker Safety': 'madde-63',
-                    'Patient Care Quality': 'madde-63',
                     'Labor Compliance': 'madde-63'
                 }
             }
