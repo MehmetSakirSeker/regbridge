@@ -787,3 +787,112 @@ window.RegBridge = {
     closeAlertModal,
     handleAlertAction
 };
+
+// Sidebar Navigation (Tab Yapısı)
+document.querySelectorAll('.sidebar-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+        e.preventDefault(); // Sayfanın zıplamasını engelle
+        
+        // 1. Sidebar'daki aktif sınıfını güncelle
+        document.querySelectorAll('.sidebar-item').forEach(s => s.classList.remove('active'));
+        this.classList.add('active');
+        
+        // 2. Hedeflenen bölümün ID'sini al
+        const sectionId = this.getAttribute('data-section');
+        const targetSection = document.getElementById(sectionId);
+        
+        if (targetSection) {
+            // 3. Tüm section'lardan 'active' sınıfını kaldır (Hepsini gizle)
+            document.querySelectorAll('main.content > section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // 4. Sadece hedeflenen section'a 'active' ekle (Görünür yap)
+            targetSection.classList.add('active');
+            
+            // Sayfanın en üstüne atmasın diye scrollu yumuşakça içeriğin başına alabiliriz
+            document.querySelector('.main-container').scrollTop = 0;
+        }
+    });
+});
+
+/* --------------------
+   Floorplan simulation
+   - Creates 5-6 example assets (sedye / tekerlekli sandalye)
+   - Places them into rooms
+   - Every 2s moves a random asset to a random room via appendChild
+   - Hover shows the asset name (using title)
+   -------------------- */
+(function() {
+    const assets = [
+        { id: 's1', type: 'stretcher', name: 'Sedye S-001' },
+        { id: 's2', type: 'wheelchair', name: 'Tekerlekli W-042' },
+        { id: 's3', type: 'stretcher', name: 'Sedye S-002' },
+        { id: 's4', type: 'wheelchair', name: 'Tekerlekli W-010' },
+        { id: 's5', type: 'stretcher', name: 'Sedye S-003' },
+        { id: 's6', type: 'wheelchair', name: 'Tekerlekli W-099' }
+    ];
+
+    const roomIds = [
+        'kantin','kanbankasi','ameliyathane','yanik','poliklinik-giris',
+        'buyuk-acil','koridor-ust','ortopedi','rontgen',
+        'koridor-orta','laboratuvar','eczane',
+        'koridor-alt','ptt','bekleme'
+    ];
+
+    // adjacency map for the detailed layout (approximate neighbors)
+    const adjacency = {
+        'kantin': ['kanbankasi','buyuk-acil'],
+        'kanbankasi': ['kantin','ameliyathane','buyuk-acil'],
+        'ameliyathane': ['kanbankasi','yanik','koridor-ust'],
+        'yanik': ['ameliyathane','poliklinik-giris','koridor-ust'],
+        'poliklinik-giris': ['yanik','rontgen'],
+        'buyuk-acil': ['kantin','kanbankasi','koridor-ust','koridor-orta'],
+        'koridor-ust': ['buyuk-acil','ameliyathane','ortopedi','rontgen','koridor-orta'],
+        'ortopedi': ['koridor-ust','rontgen','koridor-orta'],
+        'rontgen': ['koridor-ust','ortopedi','poliklinik-giris','koridor-orta'],
+        'koridor-orta': ['buyuk-acil','koridor-ust','rontgen','laboratuvar','eczane','koridor-alt'],
+        'laboratuvar': ['koridor-orta','eczane','koridor-alt'],
+        'eczane': ['koridor-orta','laboratuvar','koridor-alt'],
+        'koridor-alt': ['koridor-orta','laboratuvar','eczane','ptt','bekleme'],
+        'ptt': ['koridor-alt','bekleme'],
+        'bekleme': ['ptt','koridor-alt']
+    };
+
+    function createDot(item) {
+        const el = document.createElement('div');
+        el.className = `dot ${item.type}`;
+        el.dataset.id = item.id;
+        el.title = item.name; // native tooltip on hover
+        return el;
+    }
+
+    function placeInitial() {
+        const containers = roomIds.map(id => document.querySelector(`.room[data-room-id="${id}"] .room-inner`));
+        assets.forEach((asset, idx) => {
+            const dot = createDot(asset);
+            asset.el = dot;
+            // round-robin initial placement for predictability
+            const container = containers[idx % containers.length] || containers[0];
+            if (container) container.appendChild(dot);
+        });
+    }
+
+    // Move each asset to a random neighboring room every 5 seconds
+    function moveAssetsToNeighbor() {
+        assets.forEach(asset => {
+            if (!asset.el) return;
+            const currentRoomEl = asset.el.closest('.room');
+            const currentId = currentRoomEl ? currentRoomEl.dataset.roomId : null;
+            const neighbors = adjacency[currentId] || roomIds;
+            const targetId = neighbors[Math.floor(Math.random() * neighbors.length)];
+            const targetContainer = document.querySelector(`.room[data-room-id="${targetId}"] .room-inner`);
+            if (targetContainer) targetContainer.appendChild(asset.el);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        placeInitial();
+        setInterval(moveAssetsToNeighbor, 5000);
+    });
+})();

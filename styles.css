@@ -229,6 +229,113 @@ body {
     background: #1565c0;
 }
 
+/* Hide buttons inside main content area so only sidebar controls remain */
+.content button {
+    display: none !important;
+}
+
+/* Floorplan grid and room styles */
+.floorplan-section {
+    margin-bottom: 2rem;
+}
+
+.floorplan-grid.detailed {
+    display: grid;
+    grid-template-columns: 220px 260px 260px 220px 220px;
+    grid-template-rows: 110px 220px 180px 160px;
+    grid-template-areas: 
+        "kantin kanbankasi ameliyathane yanik poliklinik-giris"
+        "buyuk-acil buyuk-acil koridor-ust ortopedi rontgen"
+        "buyuk-acil buyuk-acil koridor-orta laboratuvar eczane"
+        "ptt bekleme koridor-alt koridor-alt koridor-alt";
+    gap: 12px;
+    margin-bottom: 0.75rem;
+    justify-content: center;
+}
+
+.room {
+    border: 2px dashed var(--border-color);
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+}
+
+.room[data-room-id="kantin"] { grid-area: kantin; }
+.room[data-room-id="kanbankasi"] { grid-area: kanbankasi; }
+.room[data-room-id="ameliyathane"] { grid-area: ameliyathane; }
+.room[data-room-id="yanik"] { grid-area: yanik; }
+.room[data-room-id="poliklinik-giris"] { grid-area: poliklinik-giris; }
+.room[data-room-id="buyuk-acil"] { grid-area: buyuk-acil; }
+.room[data-room-id="koridor-ust"] { grid-area: koridor-ust; }
+.room[data-room-id="ortopedi"] { grid-area: ortopedi; }
+.room[data-room-id="rontgen"] { grid-area: rontgen; }
+.room[data-room-id="koridor-orta"] { grid-area: koridor-orta; }
+.room[data-room-id="laboratuvar"] { grid-area: laboratuvar; }
+.room[data-room-id="eczane"] { grid-area: eczane; }
+.room[data-room-id="koridor-alt"] { grid-area: koridor-alt; }
+.room[data-room-id="ptt"] { grid-area: ptt; }
+.room[data-room-id="bekleme"] { grid-area: bekleme; }
+
+.room-title {
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.room-inner {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Dots representing assets */
+.dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    flex-shrink: 0;
+}
+
+.dot:hover {
+    transform: scale(1.25);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.dot.stretcher {
+    background: #e53935; /* red */
+}
+
+.dot.wheelchair {
+    background: #1976d2; /* blue */
+}
+
+.floorplan-legend {
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    color: var(--text-secondary);
+}
+
+.legend-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.legend-dot.stretcher { background: #e53935; }
+.legend-dot.wheelchair { background: #1976d2; }
+
 .alert-btn-details,
 .alert-btn-reschedule,
 .alert-btn-notify {
@@ -1470,4 +1577,25 @@ table tbody tr:hover {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--text-secondary);
+}
+/* --- TAB YAPISI İÇİN YENİ EKLEMELER --- */
+
+/* 1. Tüm ana bölüm section'larını varsayılan olarak gizle */
+main.content > section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* 2. Sadece 'active' class'ı olan section'ı göster */
+main.content > section.active {
+    display: block;
+    opacity: 1;
+    animation: fadeInSection 0.4s ease-out;
+}
+
+/* Bölüm açılış animasyonu */
+@keyframes fadeInSection {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }

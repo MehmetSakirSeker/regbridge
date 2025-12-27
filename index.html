@@ -14,14 +14,7 @@
                 <span class="logo-icon">🏥</span>
                 <span class="logo-text">RegBridge</span>
             </div>
-            <ul class="navbar-menu">
-                <li><a href="#" class="active">Dashboard</a></li>
-                <li><a href="#">Schedule</a></li>
-                <li><a href="#">Equipment</a></li>
-                <li><a href="#">Regulations</a></li>
-                <li><a href="#">Analytics</a></li>
-                <li><a href="#">Settings</a></li>
-            </ul>
+            
             <div class="navbar-profile">
                 <img src="https://via.placeholder.com/40" alt="Profile">
                 <span>Admin</span>
@@ -35,7 +28,7 @@
         <aside class="sidebar">
             <div class="sidebar-menu">
                 <h3>Quick Access</h3>
-                <a href="#overview" class="sidebar-item active" data-section="metrics-grid">
+                <a href="#overview" class="sidebar-item" data-section="metrics-grid">
                     <span class="icon">📊</span>
                     <span>Overview</span>
                 </a>
@@ -43,7 +36,7 @@
                     <span class="icon">👥</span>
                     <span>Staff Schedule</span>
                 </a>
-                <a href="#resources" class="sidebar-item" data-section="equipment-section">
+                <a href="#resources" class="sidebar-item active" data-section="equipment-section">
                     <span class="icon">🏥</span>
                     <span>Resources</span>
                 </a>
@@ -106,6 +99,10 @@
                         <span class="metric-label">Require Attention</span>
                     </div>
                 </div>
+                
+                <!-- Detailed Floorplan (moved under Resources) -->
+                
+
             </section>
 
             <!-- Schedule Section -->
@@ -379,7 +376,7 @@
             </section>
 
             <!-- RFID Equipment Tracking -->
-            <section class="equipment-section" id="equipment-section">
+            <section class="equipment-section active" id="equipment-section">
                 <div class="section-header">
                     <h2>RFID Equipment Tracking</h2>
                     <select class="equipment-filter">
@@ -452,7 +449,95 @@
                         <p><strong>Status:</strong> Connected</p>
                     </div>
                 </div>
+                <div class="floorplan-wrapper">
+                    <div class="section-header">
+                        <h3>Hastane Krokisi — Resources Map</h3>
+                    </div>
+
+                    <div class="floorplan-grid detailed">
+                        <div class="room kantin" data-room-id="kantin">
+                            <div class="room-title">Kantin</div>
+                            <div class="room-inner"></div>
+                        </div>
+
+                        <div class="room kanbankasi" data-room-id="kanbankasi">
+                            <div class="room-title">Kan Bankası</div>
+                            <div class="room-inner"></div>
+                        </div>
+
+                        <div class="room ameliyathane" data-room-id="ameliyathane">
+                            <div class="room-title">Ameliyathane</div>
+                            <div class="room-inner"></div>
+                        </div>
+
+                        <div class="room yanik" data-room-id="yanik">
+                            <div class="room-title">Yanık Ünitesi</div>
+                            <div class="room-inner"></div>
+                        </div>
+
+                        <div class="room poliklinik-giris" data-room-id="poliklinik-giris">
+                            <div class="room-title">Poliklinik Girişi</div>
+                            <div class="room-inner"></div>
+                        </div>
+
+                        <div class="room buyuk-acil" data-room-id="buyuk-acil">
+                            <div class="room-title">Büyük Acil</div>
+                            <div class="room-inner"></div>
+                        </div>
+
+                        <div class="room koridor-ust" data-room-id="koridor-ust">
+                            <div class="room-title">C Koridor</div>
+                            <div class="room-inner"></div>
+                        </div>
+
+                        <div class="room ortopedi" data-room-id="ortopedi">
+                            <div class="room-title">Ortopedi Polik.</div>
+                            <div class="room-inner"></div>
+                        </div>
+
+                        <div class="room rontgen" data-room-id="rontgen">
+                            <div class="room-title">Röntgen</div>
+                            <div class="room-inner"></div>
+                        </div>
+
+                        <div class="room koridor-orta" data-room-id="koridor-orta">
+                            <div class="room-title">D Koridor</div>
+                            <div class="room-inner"></div>
+                        </div>
+
+                        <div class="room laboratuvar" data-room-id="laboratuvar">
+                            <div class="room-title">Laboratuvar</div>
+                            <div class="room-inner"></div>
+                        </div>
+
+                        <div class="room eczane" data-room-id="eczane">
+                            <div class="room-title">Eczane</div>
+                            <div class="room-inner"></div>
+                        </div>
+
+                        <div class="room koridor-alt" data-room-id="koridor-alt">
+                            <div class="room-title">H Koridor</div>
+                            <div class="room-inner"></div>
+                        </div>
+
+                        <div class="room ptt" data-room-id="ptt">
+                            <div class="room-title">PTT / Giriş</div>
+                            <div class="room-inner"></div>
+                        </div>
+
+                        <div class="room bekleme" data-room-id="bekleme">
+                            <div class="room-title">Bekleme Salonu</div>
+                            <div class="room-inner"></div>
+                        </div>
+                    </div>
+
+                    <div class="floorplan-legend">
+                        <span><span class="legend-dot stretcher"></span> Sedye</span>
+                        <span style="margin-left:1rem;"><span class="legend-dot wheelchair"></span> Tekerlekli Sandalye</span>
+                    </div>
+                </div>
             </section>
+            
 
             <!-- Analytics -->
             <section class="analytics-section">
@@ -522,6 +607,8 @@
                     </div>
                 </div>
             </section>
+
+            
 
             <!-- Footer -->
             <footer class="page-footer">
