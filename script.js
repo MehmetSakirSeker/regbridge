@@ -24,6 +24,7 @@ const regulationViolations = [
         title: "Excessive Working Hours - Dr. Ahmet Kaya",
         severity: "critical",
         description: "Doctor worked 47 hours per week in violation of regulations. Maximum allowed is 45 hours per week.",
+        regulationReason: "İş Kanunu Madde 63 gereği haftalık çalışma süresi ve fazla mesai sınırları ihlal edilmiştir.",
         date: "2024-12-23",
         time: "14:32",
         department: "Emergency",
@@ -33,6 +34,17 @@ const regulationViolations = [
             excess: "2 hours",
             period: "Dec 21-27, 2024"
         },
+        attachments: [
+            {
+                title: 'İş Kanunu',
+                url: 'docs/iskanunu.html',
+                anchors: {
+                    'Worker Safety': 'madde-63',
+                    'Patient Care Quality': 'madde-63',
+                    'Labor Compliance': 'madde-63'
+                }
+            }
+        ],
         impact: ["Worker Safety", "Patient Care Quality", "Labor Compliance"]
     },
     {
@@ -40,6 +52,7 @@ const regulationViolations = [
         title: "Equipment Shortage - Defibrillator",
         severity: "critical",
         description: "In the Emergency Department, 1 of the required 3 defibrillators is under maintenance. Minimum 2 operational units required.",
+        regulationReason: "Sağlık Hizmetleri Donanımı Yönetmeliği ek-2 uyarınca kritik ekipman sayısı sağlanmalıdır.",
         date: "2024-12-22",
         time: "09:15",
         department: "Emergency",
@@ -49,6 +62,17 @@ const regulationViolations = [
             maintenance: "1 unit",
             riskLevel: "High"
         },
+        attachments: [
+            {
+                title: 'Sağlık Ekipmanları Politikası',
+                url: 'docs/equipment_policy.html',
+                anchors: {
+                    'Patient Safety': 'ek-2',
+                    'Emergency Response Capacity': 'ek-2',
+                    'Regulation Compliance': 'ek-2'
+                }
+            }
+        ],
         impact: ["Patient Safety", "Emergency Response Capacity", "Regulation Compliance"]
     },
     {
@@ -104,6 +128,7 @@ const regulationViolations = [
         title: "Ambulance Maintenance Status",
         severity: "info",
         description: "1 ambulance was scheduled for preventive maintenance. System checks and updates in progress.",
+        regulationReason: "Taşıt bakım ve işletme yönetmeliği gereği acil taşıtların bakım planı oluşturulmalı ve uygulanmalıdır.",
         date: "2024-12-18",
         time: "10:30",
         department: "Transport Services",
@@ -113,6 +138,15 @@ const regulationViolations = [
             maintenance: "1 ambulance",
             duration: "3-4 hours"
         },
+        attachments: [
+            {
+                title: 'Taşıt Bakım Yönetmeliği',
+                url: 'docs/equipment_policy.html',
+                anchors: {
+                    'Operational Readiness': 'madde-12'
+                }
+            }
+        ],
         impact: ["Operational Readiness"]
     }
 ];
@@ -535,17 +569,29 @@ function renderViolations() {
             `;
         }
         
-        let impactHTML = violation.impact.map(i => `<span class="impact-badge">📌 ${i}</span>`).join('');
-        
+        let impactHTML = violation.impact.map(i => `
+            <span class="impact-badge clickable" data-violation-id="${violation.id}" data-impact="${i}">📌 ${i}</span>
+        `).join('');
+
+        // Regulation reason and attachments
+        const regulationHTML = violation.regulationReason ? `
+            <div class="violation-regulation">
+                <h4>İhlal Gerekçesi</h4>
+                <p>${violation.regulationReason}</p>
+            </div>
+        ` : '';
+
         violationItem.innerHTML = `
             <div class="violation-header">
                 <h3 class="violation-title">${violation.title}</h3>
                 <span class="violation-severity ${violation.severity}">${violation.severity === 'critical' ? 'Critical' : violation.severity === 'warning' ? 'Warning' : 'Information'}</span>
             </div>
             <p class="violation-description">${violation.description}</p>
+            ${regulationHTML}
             <div class="violation-details">
                 ${detailsHTML}
             </div>
+            
             <div style="display: flex; gap: 1rem; margin-top: 0.8rem; font-size: 0.85rem; color: var(--text-secondary);">
                 <span>📅 ${violation.date}</span>
                 <span>⏰ ${violation.time}</span>
@@ -553,9 +599,78 @@ function renderViolations() {
             </div>
             <div class="violation-impact">${impactHTML}</div>
         `;
-        
+
         violationsList.appendChild(violationItem);
+
+        // attach click handlers for impact badges (open clause view)
+        violationItem.querySelectorAll('.impact-badge.clickable').forEach(b => {
+            b.addEventListener('click', function(e) {
+                const vid = parseInt(this.dataset.violationId, 10);
+                const impactLabel = this.dataset.impact;
+                showClauseForImpact(vid, impactLabel);
+            });
+        });
     });
+}
+
+// Clause-viewing / attachments: show specific clause from a document
+function showClauseForImpact(violationId, impactLabel) {
+    const violation = regulationViolations.find(v => v.id === violationId);
+    if (!violation) return;
+
+    let found = null;
+    if (violation.attachments && violation.attachments.length) {
+        for (const att of violation.attachments) {
+            const anchors = att.anchors || {};
+            if (anchors[impactLabel]) {
+                found = { attachment: att, anchor: anchors[impactLabel] };
+                break;
+            }
+        }
+        if (!found) {
+            const att = violation.attachments[0];
+            const firstAnchor = att && att.anchors && Object.values(att.anchors)[0];
+            if (att && firstAnchor) found = { attachment: att, anchor: firstAnchor };
+        }
+    }
+
+    if (!found) {
+        showNotification('İlgili doküman bulunamadı.', 'info');
+        return;
+    }
+
+    const url = found.attachment.url;
+    const anchor = found.anchor;
+    window._lastDocUrl = url;
+
+    fetch(url).then(r => r.text()).then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const el = doc.getElementById(anchor) || doc.querySelector(`[name="${anchor}"]`);
+        const modal = document.getElementById('docModal');
+        const title = modal.querySelector('.doc-title');
+        const body = modal.querySelector('.doc-body');
+
+        title.textContent = `${found.attachment.title} — ${anchor}`;
+        if (el) {
+            body.innerHTML = el.outerHTML;
+        } else {
+            body.innerHTML = `<p>Aranan madde dokümanda bulunamadı. Tam doküman yeni pencerede açılıyor.</p><p><a href="${url}" target="_blank">Tam dokümanı aç</a></p>`;
+        }
+
+        modal.classList.add('active');
+    }).catch(err => {
+        window.open(url, '_blank');
+    });
+}
+
+function closeDocModal() {
+    const modal = document.getElementById('docModal');
+    if (modal) modal.classList.remove('active');
+}
+
+function openDocFull() {
+    if (window._lastDocUrl) window.open(window._lastDocUrl, '_blank');
 }
 
 function openViolationModal() {
@@ -579,6 +694,24 @@ document.getElementById('violationModal').addEventListener('click', function(e) 
     if (e.target === this) {
         closeViolationModal();
     }
+});
+
+// Doc modal buttons (if present)
+document.addEventListener('DOMContentLoaded', function() {
+    const docModal = document.getElementById('docModal');
+    if (!docModal) return;
+
+    const closeBtn = document.getElementById('closeDocBtn');
+    const closeIcon = document.getElementById('closeDocModal');
+    const openFull = document.getElementById('openDocFullBtn');
+
+    if (closeBtn) closeBtn.addEventListener('click', closeDocModal);
+    if (closeIcon) closeIcon.addEventListener('click', closeDocModal);
+    if (openFull) openFull.addEventListener('click', openDocFull);
+
+    docModal.addEventListener('click', function(e) {
+        if (e.target === this) closeDocModal();
+    });
 });
 
 // Alert Details Data

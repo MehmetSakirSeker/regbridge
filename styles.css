@@ -333,6 +333,47 @@ body {
     margin-right: 8px;
 }
 
+/* attachments UI removed */
+
+/* Document clause modal styling */
+.doc-modal .modal-content {
+    width: 820px;
+    max-width: 95%;
+}
+.doc-modal .doc-title {
+    font-size: 1rem;
+}
+.doc-modal .doc-body {
+    max-height: 60vh;
+    overflow: auto;
+    padding: 0.5rem 0.25rem;
+}
+.doc-modal .doc-body .clause { margin-bottom: 0.5rem; }
+
+/* Clickable impact badge styling to indicate underline/clickability */
+.impact-badge.clickable {
+    color: var(--primary-color);
+    text-decoration: none;
+    border-bottom: 2px solid rgba(30,136,229,0.15);
+    padding-bottom: 2px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+.impact-badge.clickable:hover {
+    border-bottom-color: var(--primary-color);
+    transform: translateY(-1px);
+}
+.impact-badge.clickable:focus {
+    outline: 3px solid rgba(30,136,229,0.18);
+    outline-offset: 3px;
+}
+
+/* Make Violation Details button visible even though most main buttons are hidden */
+.content #violationDetailsBtn,
+.content .violation-details-btn {
+    display: inline-block !important;
+}
+
 .legend-dot.stretcher { background: #e53935; }
 .legend-dot.wheelchair { background: #1976d2; }
 
