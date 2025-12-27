@@ -24,7 +24,7 @@ const regulationViolations = [
         title: "Excessive Working Hours - Dr. Ahmet Kaya",
         severity: "critical",
         description: "Doctor worked 47 hours per week in violation of regulations. Maximum allowed is 45 hours per week.",
-        regulationReason: "İş Kanunu Madde 63 gereği haftalık çalışma süresi ve fazla mesai sınırları ihlal edilmiştir.",
+        regulationReason: "Violation of Labor Code (Article 63): weekly working hours and overtime limits exceeded.",
         date: "2024-12-23",
         time: "14:32",
         department: "Emergency",
@@ -50,7 +50,7 @@ const regulationViolations = [
                 }
             },
             {
-                title: 'İş Kanunu',
+                title: 'Labor Code',
                 url: 'docs/iskanunu.html',
                 anchors: {
                     'Labor Compliance': 'madde-63'
@@ -64,7 +64,7 @@ const regulationViolations = [
         title: "Equipment Shortage - Defibrillator",
         severity: "critical",
         description: "In the Emergency Department, 1 of the required 3 defibrillators is under maintenance. Minimum 2 operational units required.",
-        regulationReason: "Sağlık Hizmetleri Donanımı Yönetmeliği ek-2 uyarınca kritik ekipman sayısı sağlanmalıdır.",
+        regulationReason: "Per Equipment Regulation (Annex 2): minimum critical equipment counts must be maintained.",
         date: "2024-12-22",
         time: "09:15",
         department: "Emergency",
@@ -76,7 +76,7 @@ const regulationViolations = [
         },
         attachments: [
             {
-                title: 'Sağlık Ekipmanları Politikası',
+                title: 'Health Equipment Policy',
                 url: 'docs/equipment_policy.html',
                 anchors: {
                     'Patient Safety': 'ek-2',
@@ -105,7 +105,7 @@ const regulationViolations = [
     },
     {
         id: 4,
-        title: "Night Shift Duration Exceeded - Nurse Aişe Yilmaz",
+        title: "Night Shift Duration Exceeded - Nurse Aisha Yilmaz",
         severity: "warning",
         description: "Nurse was assigned to night shift for 8 hours without consent. Maximum 7.5 hours allowed without written consent.",
         date: "2024-12-20",
@@ -140,7 +140,7 @@ const regulationViolations = [
         title: "Ambulance Maintenance Status",
         severity: "info",
         description: "1 ambulance was scheduled for preventive maintenance. System checks and updates in progress.",
-        regulationReason: "Taşıt bakım ve işletme yönetmeliği gereği acil taşıtların bakım planı oluşturulmalı ve uygulanmalıdır.",
+        regulationReason: "Per Vehicle Maintenance Regulation: emergency vehicle maintenance plans must be established and followed.",
         date: "2024-12-18",
         time: "10:30",
         department: "Transport Services",
@@ -152,7 +152,7 @@ const regulationViolations = [
         },
         attachments: [
             {
-                title: 'Taşıt Bakım Yönetmeliği',
+                title: 'Vehicle Maintenance Regulation',
                 url: 'docs/equipment_policy.html',
                 anchors: {
                     'Operational Readiness': 'madde-12'
@@ -176,7 +176,7 @@ function updateDateTime() {
         second: '2-digit'
     };
     
-    const dateTimeString = now.toLocaleDateString('tr-TR', options);
+    const dateTimeString = now.toLocaleDateString('en-US', options);
     document.getElementById('datetime').textContent = dateTimeString;
     document.getElementById('footer-time').textContent = dateTimeString;
 }
@@ -588,7 +588,7 @@ function renderViolations() {
         // Regulation reason and attachments
         const regulationHTML = violation.regulationReason ? `
             <div class="violation-regulation">
-                <h4>İhlal Gerekçesi</h4>
+                <h4>Violation Reason</h4>
                 <p>${violation.regulationReason}</p>
             </div>
         ` : '';
@@ -647,7 +647,7 @@ function showClauseForImpact(violationId, impactLabel) {
     }
 
     if (!found) {
-        showNotification('İlgili doküman bulunamadı.', 'info');
+        showNotification('Relevant document not found.', 'info');
         return;
     }
 
@@ -667,7 +667,7 @@ function showClauseForImpact(violationId, impactLabel) {
         if (el) {
             body.innerHTML = el.outerHTML;
         } else {
-            body.innerHTML = `<p>Aranan madde dokümanda bulunamadı. Tam doküman yeni pencerede açılıyor.</p><p><a href="${url}" target="_blank">Tam dokümanı aç</a></p>`;
+            body.innerHTML = `<p>The requested clause was not found in the document. Opening the full document in a new window.</p><p><a href="${url}" target="_blank">Open full document</a></p>`;
         }
 
         modal.classList.add('active');

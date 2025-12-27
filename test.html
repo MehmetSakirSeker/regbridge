@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>RegBridge - Sistem Test Sayfası</title>
+    <title>RegBridge - System Test Page</title>
     <style>
         * {
             margin: 0;
@@ -221,14 +221,14 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🏥 RegBridge Sistem Test</h1>
-            <p>Mock UI Uyumluluğu ve Fonksiyonellik Kontrolü</p>
+            <h1>🏥 RegBridge System Test</h1>
+            <p>Mock UI compatibility and functionality check</p>
         </div>
         
         <div class="content">
             <!-- Dosya Kontrolü -->
             <div class="section">
-                <h2>📁 Dosya Yapısı Kontrolü</h2>
+                <h2>📁 File Structure Check</h2>
                 <div class="file-check">
                     <div class="file-item exists">index.html</div>
                     <div class="file-item exists">styles.css</div>
@@ -237,107 +237,107 @@
                     <div class="file-item exists">FINAL_REPORT.txt</div>
                     <div class="file-item exists">BAŞLANGIÇ_REHBERİ.txt</div>
                 </div>
-                <p style="margin-top: 1rem; color: #43a047; font-weight: 600;">✓ Tüm dosyalar mevcut!</p>
+                <p style="margin-top: 1rem; color: #43a047; font-weight: 600;">✓ All files present!</p>
             </div>
             
             <!-- Özellik Kontrolü -->
             <div class="section">
-                <h2>✨ Özellik Listesi</h2>
+                <h2>✨ Feature List</h2>
                 <div class="feature-grid">
                     <div class="feature-card">
-                        <h3>📊 Canlı Metrikler</h3>
-                        <p>Aktif personel, uygunluk puanı, ekipman sayısı, uyarı sıklığı</p>
+                        <h3>📊 Live Metrics</h3>
+                        <p>Active staff, compliance score, equipment counts, alert frequency</p>
                     </div>
                     <div class="feature-card">
-                        <h3>📅 Haftalık Çizelge</h3>
-                        <p>Departmanlara göre filtrelenebilir personel dağılımı</p>
+                        <h3>📅 Weekly Schedule</h3>
+                        <p>Filterable staff distribution by department</p>
                     </div>
                     <div class="feature-card">
-                        <h3>✅ Yasal Kısıtlamalar</h3>
-                        <p>40+ yasal kuralın uygunluk durumu gösterimi</p>
+                        <h3>✅ Regulatory Constraints</h3>
+                        <p>Display of compliance status for 40+ regulations</p>
                     </div>
                     <div class="feature-card">
-                        <h3>👥 Personel Detayları</h3>
-                        <p>Arama özelliği ile personel filtreleme ve gözetim</p>
+                        <h3>👥 Staff Details</h3>
+                        <p>Filter and inspect staff using the search box</p>
                     </div>
                     <div class="feature-card">
-                        <h3>🚨 Risk Yönetimi</h3>
-                        <p>Gerçek zamanlı tehdit uyarıları ve yanıt protokolleri</p>
+                        <h3>🚨 Risk Management</h3>
+                        <p>Real-time threat alerts and response protocols</p>
                     </div>
                     <div class="feature-card">
-                        <h3>📍 RFID Takibi</h3>
-                        <p>Ekipman konumu, durumu ve güncelleme zamanlaması</p>
+                        <h3>📍 RFID Tracking</h3>
+                        <p>Equipment location, status, and update timestamps</p>
                     </div>
                     <div class="feature-card">
-                        <h3>📈 Analitik</h3>
-                        <p>Uygunluk eğilimleri, personel kullanımı, ekipman durumu</p>
+                        <h3>📈 Analytics</h3>
+                        <p>Compliance trends, staff utilization, equipment status</p>
                     </div>
                     <div class="feature-card">
-                        <h3>🎨 Duyarlı Tasarım</h3>
-                        <p>Masaüstü, tablet ve mobil cihazlarda tamamen işlevsel</p>
+                        <h3>🎨 Responsive Design</h3>
+                        <p>Fully functional on desktop, tablet, and mobile devices</p>
                     </div>
                 </div>
             </div>
             
             <!-- İşlevsellik Testleri -->
             <div class="section">
-                <h2>🧪 İşlevsellik Testleri</h2>
-                <button class="test-button" onclick="testFileStructure()">✓ Dosya Yapısı Kontrolü</button>
-                <button class="test-button" onclick="testResponsiveness()">📱 Duyarlılık Testi</button>
-                <button class="test-button" onclick="testJavaScript()">⚙️ JavaScript Fonksiyonları</button>
-                <button class="test-button" onclick="testPerformance()">⚡ Performans Kontrolü</button>
-                <button class="test-button" onclick="testAccessibility()">♿ Erişilebilirlik Testi</button>
+                <h2>🧪 Functionality Tests</h2>
+                    <button class="test-button" onclick="testFileStructure()">✓ File Structure Check</button>
+                    <button class="test-button" onclick="testResponsiveness()">📱 Responsiveness Test</button>
+                    <button class="test-button" onclick="testJavaScript()">⚙️ JavaScript Functions</button>
+                    <button class="test-button" onclick="testPerformance()">⚡ Performance Check</button>
+                    <button class="test-button" onclick="testAccessibility()">♿ Accessibility Test</button>
                 <div id="testResult" class="result-box"></div>
             </div>
             
             <!-- Hızlı Başlangıç -->
             <div class="section">
-                <h2>🚀 Hızlı Başlangıç</h2>
-                <ol style="margin-left: 1.5rem; color: #666; line-height: 2;">
-                    <li><strong>Dosyaları Açma:</strong> Aynı klasörde 6 dosya bulunmalıdır</li>
-                    <li><strong>index.html'i Aç:</strong> Tarayıcıda veya yerel sunucuda çalıştır</li>
-                    <li><strong>Dashboard'ı Keşfet:</strong> Tüm bölümleri gez</li>
-                    <li><strong>Filtreleri Dene:</strong> Departman ve ekipman filtreleri</li>
-                    <li><strong>Arama Yap:</strong> Personel isimlerine göre ara</li>
-                    <li><strong>Program Oluştur:</strong> Yeni çizelge generate et</li>
-                    <li><strong>Dokümantasyonu Oku:</strong> README.md ve BAŞLANGIÇ_REHBERİ.txt</li>
-                </ol>
+                <h2>🚀 Quick Start</h2>
+                    <ol style="margin-left: 1.5rem; color: #666; line-height: 2;">
+                        <li><strong>Open Files:</strong> Ensure the 6 core files are in the same folder</li>
+                        <li><strong>Open index.html:</strong> Run in browser or via a local server</li>
+                        <li><strong>Explore the Dashboard:</strong> Browse all sections</li>
+                        <li><strong>Try Filters:</strong> Department and equipment filters</li>
+                        <li><strong>Use Search:</strong> Search staff by name</li>
+                        <li><strong>Generate Schedule:</strong> Create a new schedule</li>
+                        <li><strong>Read Documentation:</strong> README.md and BAŞLANGIÇ_REHBERİ.txt</li>
+                    </ol>
             </div>
             
             <!-- Sistem Gereksinimleri -->
             <div class="section">
-                <h2>💻 Sistem Gereksinimleri</h2>
+                <h2>💻 System Requirements</h2>
                 <ul class="checklist">
                     <li class="success">Modern Web Tarayıcısı (Chrome, Firefox, Safari, Edge)</li>
                     <li class="success">HTML5 Desteği</li>
                     <li class="success">CSS3 Desteği (Grid, Flexbox, Transitions)</li>
                     <li class="success">JavaScript ES6+ Desteği</li>
-                    <li class="success">İnternet Bağlantısı (İsteğe Bağlı)</li>
+                    <li class="success">Internet Connection (optional)</li>
                     <li class="success">Minimum 1GB RAM</li>
                 </ul>
             </div>
             
             <!-- İçerik Özeti -->
             <div class="section">
-                <h2>📊 İçerik Özeti</h2>
+                <h2>📊 Content Summary</h2>
                 <ul class="checklist">
-                    <li class="success"><strong>index.html:</strong> 800+ satır - Ana dashboard arayüzü</li>
-                    <li class="success"><strong>styles.css:</strong> 900+ satır - Görsel tasarım ve animasyonlar</li>
-                    <li class="success"><strong>script.js:</strong> 350+ satır - Etkileşim ve mantık</li>
-                    <li class="success"><strong>README.md:</strong> Detaylı teknik dokümantasyon</li>
-                    <li class="success"><strong>BAŞLANGIÇ_REHBERİ.txt:</strong> Kullanıcı rehberi</li>
-                    <li class="success"><strong>FINAL_REPORT.txt:</strong> Orijinal FENG 497 raporu</li>
+                    <li class="success"><strong>index.html:</strong> 800+ lines - Main dashboard UI</li>
+                    <li class="success"><strong>styles.css:</strong> 900+ lines - Visual design and animations</li>
+                    <li class="success"><strong>script.js:</strong> 350+ lines - Interaction and logic</li>
+                    <li class="success"><strong>README.md:</strong> Detailed technical documentation</li>
+                    <li class="success"><strong>BAŞLANGIÇ_REHBERİ.txt:</strong> Getting started guide</li>
+                    <li class="success"><strong>FINAL_REPORT.txt:</strong> Original FENG 497 report</li>
                 </ul>
             </div>
             
             <!-- Bağlantılar -->
             <div class="section">
-                <h2>🔗 Dosyalara Erişim</h2>
+                <h2>🔗 Links</h2>
                 <div class="links">
-                    <a href="index.html" class="link-button">→ Ana Dashboard'a Git</a>
-                    <a href="README.md" class="link-button">📖 README'yi Oku</a>
-                    <a href="BAŞLANGIÇ_REHBERİ.txt" class="link-button">🎓 Rehberi Aç</a>
-                    <a href="FINAL_REPORT.txt" class="link-button">📋 Raporu Gör</a>
+                    <a href="index.html" class="link-button">→ Go to Dashboard</a>
+                    <a href="README.md" class="link-button">📖 Read README</a>
+                    <a href="BAŞLANGIÇ_REHBERİ.txt" class="link-button">🎓 Open Guide</a>
+                    <a href="FINAL_REPORT.txt" class="link-button">📋 View Report</a>
                 </div>
             </div>
         </div>
