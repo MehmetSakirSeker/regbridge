@@ -361,37 +361,48 @@ body {
 .room[data-room-id="eczane"]           .room-inner::before { background-image: url("icons/pharmacy_11469451.png"); }
 .room[data-room-id="koridor-alt"]      .room-inner::before { background-image: url("icons/letter-c_5084054.png"); }
 .room[data-room-id="ptt"]              .room-inner::before { background-image: url("icons/reception_4296024.png"); }
-.room[data-room-id="bekleme"]          .room-inner::before { background-image: url("icons/letter-h_5084144.png"); }.dot {
-    width: 24px;
-    height: 24px;
+.room[data-room-id="bekleme"]          .room-inner::before { background-image: url("icons/letter-h_5084144.png"); }
+/* Dots representing assets */
+.dot {
+    /* Boyutu büyüttük (24px -> 34px) */
+    width: 34px;
+    height: 34px;
+    
     border-radius: 50%;
-    display: inline-block;
+    
+    /* İçindeki yazıyı (ID) tam ortalamak için Flexbox */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
     cursor: pointer;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
     flex-shrink: 0;
+
+    /* Yazı Stilleri */
+    color: white;       /* Yazı rengi beyaz olsun */
+    font-weight: bold;  /* Yazı kalın olsun */
+    font-size: 0.8rem;  /* Yazı boyutu */
+    text-transform: uppercase; /* Harfleri büyük yap (s1 -> S1) */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Hafif gölge ekledik */
 }
 
 .dot:hover {
-    transform: scale(1.25);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transform: scale(1.15); /* Büyüme oranını biraz kıstık çünkü zaten büyük */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    z-index: 10; /* Üstüne gelince diğerlerinin üstüne çıksın */
 }
 
+/* Renkler aynı kalıyor */
 .dot.stretcher {
     background: #e53935; /* red */
+    border: 2px solid #b71c1c; /* Daha belirgin olması için kenarlık ekledim (opsiyonel) */
 }
 
 .dot.wheelchair {
     background: #1976d2; /* blue */
+    border: 2px solid #0d47a1; /* Daha belirgin olması için kenarlık ekledim (opsiyonel) */
 }
-
-.floorplan-legend {
-    margin-top: 0.5rem;
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    color: var(--text-secondary);
-}
-
 .legend-dot {
     width: 16px;
     height: 16px;

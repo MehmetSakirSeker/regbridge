@@ -971,11 +971,13 @@ document.querySelectorAll('.sidebar-item').forEach(item => {
 (function() {
     const assets = [
         { id: 's1', type: 'stretcher', name: 'stretcher S-001' },
-        { id: 's2', type: 'wheelchair', name: 'wheelchair W-042' },
-        { id: 's3', type: 'stretcher', name: 'stretcher S-002' },
-        { id: 's4', type: 'wheelchair', name: 'wheelchair W-010' },
-        { id: 's5', type: 'stretcher', name: 'stretcher S-003' },
-        { id: 's6', type: 'wheelchair', name: 'wheelchair W-099' }
+        { id: 'w1', type: 'wheelchair', name: 'wheelchair W-042' },
+        { id: 's2', type: 'stretcher', name: 'stretcher S-002' },
+        { id: 'w2', type: 'wheelchair', name: 'wheelchair W-010' },
+        { id: 's3', type: 'stretcher', name: 'stretcher S-003' },
+        { id: 'w3', type: 'wheelchair', name: 'wheelchair W-099' },
+        { id: 's4', type: 'stretcher', name: 'stretcher S-004' },
+        { id: 'w4', type: 'wheelchair', name: 'wheelchair W-021' }
     ];
 
     const roomIds = [
@@ -1009,6 +1011,7 @@ document.querySelectorAll('.sidebar-item').forEach(item => {
         el.className = `dot ${item.type}`;
         el.dataset.id = item.id;
         el.title = item.name; // native tooltip on hover
+        el.textContent = item.id;
         return el;
     }
 
