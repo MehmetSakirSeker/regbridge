@@ -256,13 +256,20 @@ body {
 .room {
     border: 2px dashed var(--border-color);
     background: white;
-    padding: 1rem;
+    padding: 0.5rem;
     border-radius: 10px;
     min-height: 140px;
     display: flex;
     flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    position: relative;
+    transition: var(--transition);
+    /* Bu özellik, ikonun odanın beyaz arka planının altına kaçmasını engeller */
+    isolation: isolate; 
 }
 
+/* Grid alanları (Değişmedi) */
 .room[data-room-id="kantin"] { grid-area: kantin; }
 .room[data-room-id="kanbankasi"] { grid-area: kanbankasi; }
 .room[data-room-id="ameliyathane"] { grid-area: ameliyathane; }
@@ -279,21 +286,82 @@ body {
 .room[data-room-id="ptt"] { grid-area: ptt; }
 .room[data-room-id="bekleme"] { grid-area: bekleme; }
 
+/* Oda Başlığı */
 .room-title {
     font-weight: 700;
     color: var(--text-primary);
     margin-bottom: 0.5rem;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    z-index: 2; /* İkonun üstünde kalsın */
 }
 
+/* İçerik Taşıyıcı */
 .room-inner {
     display: flex;
-    gap: 0.6rem;
+    gap: 4px;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2; /* Dot'lar ikonun üstünde kalsın */
 }
 
-/* Dots representing assets */
+/* --- İKON AYARLARI --- */
+.floorplan-grid .room .room-inner::before {
+    content: "";
+    position: absolute;
+    /* Tam ortaya hizalama */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    width: 100%;
+    height: 100%;
+    
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* İkon Boyutu: 32px (Küçük) */
+    background-size: 32px 32px; 
+    
+    /* Görünürlük: Yarı saydam (0.5) olarak HER ZAMAN görünür */
+    opacity: 0.5; 
+    
+    pointer-events: none; 
+    z-index: -1; /* Yazıların ve dotların arkasında */
+    
+    /* Renk ayarı */
+     opacity: 0.85; /* Gri tonlu ama görünür */
+}
+
+/* Mouse ile üzerine gelince ikon biraz daha belirginleşsin */
+.floorplan-grid .room:hover .room-inner::before {
+    opacity: 1; /* Tam görünürlük */
+    filter: saturate(1) contrast(1); /* Orijinal renkler */
+    transition: all 0.3s ease;
+}
+
+/* İkon Resim Yolları */
+.room[data-room-id="kantin"]           .room-inner::before { background-image: url("icons/cafeteria.png"); }
+.room[data-room-id="kanbankasi"]       .room-inner::before { background-image: url("icons/bloodbank.png"); }
+.room[data-room-id="ameliyathane"]     .room-inner::before { background-image: url("icons/operation.png"); }
+.room[data-room-id="yanik"]            .room-inner::before { background-image: url("icons/hand_16434356.png"); }
+.room[data-room-id="poliklinik-giris"] .room-inner::before { background-image: url("icons/outpatient.png"); }
+.room[data-room-id="buyuk-acil"]       .room-inner::before { background-image: url("icons/emergency.png"); }
+.room[data-room-id="koridor-ust"]      .room-inner::before { background-image: url("icons/letter-c_5084054.png"); }
+.room[data-room-id="ortopedi"]         .room-inner::before { background-image: url("icons/orthopedy.png"); }
+.room[data-room-id="rontgen"]          .room-inner::before { background-image: url("icons/radiology.png"); }
+.room[data-room-id="koridor-orta"]     .room-inner::before { background-image: url("icons/letter-d_5084067.png"); }
+.room[data-room-id="laboratuvar"]      .room-inner::before { background-image: url("icons/laboratory_15395409.png"); }
+.room[data-room-id="eczane"]           .room-inner::before { background-image: url("icons/pharmacy_11469451.png"); }
+.room[data-room-id="koridor-alt"]      .room-inner::before { background-image: url("icons/letter-h_5084144.png"); }
+.room[data-room-id="ptt"]              .room-inner::before { background-image: url("icons/reception_4296024.png"); }
+.room[data-room-id="bekleme"]          .room-inner::before { background-image: url("icons/area.png"); }/* Dots representing assets */
 .dot {
     width: 24px;
     height: 24px;
