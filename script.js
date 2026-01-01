@@ -970,12 +970,12 @@ document.querySelectorAll('.sidebar-item').forEach(item => {
    -------------------- */
 (function() {
     const assets = [
-        { id: 's1', type: 'stretcher', name: 'Sedye S-001' },
-        { id: 's2', type: 'wheelchair', name: 'Tekerlekli W-042' },
-        { id: 's3', type: 'stretcher', name: 'Sedye S-002' },
-        { id: 's4', type: 'wheelchair', name: 'Tekerlekli W-010' },
-        { id: 's5', type: 'stretcher', name: 'Sedye S-003' },
-        { id: 's6', type: 'wheelchair', name: 'Tekerlekli W-099' }
+        { id: 's1', type: 'stretcher', name: 'stretcher S-001' },
+        { id: 's2', type: 'wheelchair', name: 'wheelchair W-042' },
+        { id: 's3', type: 'stretcher', name: 'stretcher S-002' },
+        { id: 's4', type: 'wheelchair', name: 'wheelchair W-010' },
+        { id: 's5', type: 'stretcher', name: 'stretcher S-003' },
+        { id: 's6', type: 'wheelchair', name: 'wheelchair W-099' }
     ];
 
     const roomIds = [
