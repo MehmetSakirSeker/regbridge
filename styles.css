@@ -349,19 +349,19 @@ body {
 /* İkon Resim Yolları */
 .room[data-room-id="kantin"]           .room-inner::before { background-image: url("icons/cafeteria.png"); }
 .room[data-room-id="kanbankasi"]       .room-inner::before { background-image: url("icons/bloodbank.png"); }
-.room[data-room-id="ameliyathane"]     .room-inner::before { background-image: url("icons/hand_16434356.png"); }
+.room[data-room-id="ameliyathane"]     .room-inner::before { background-image: url("icons/operation.png"); }
 .room[data-room-id="yanik"]            .room-inner::before { background-image: url("icons/hand_16434356.png"); }
 .room[data-room-id="poliklinik-giris"] .room-inner::before { background-image: url("icons/outpatient.png"); }
 .room[data-room-id="buyuk-acil"]       .room-inner::before { background-image: url("icons/emergency.png"); }
 .room[data-room-id="koridor-ust"]      .room-inner::before { background-image: url("icons/letter-c_5084054.png"); }
 .room[data-room-id="ortopedi"]         .room-inner::before { background-image: url("icons/orthopedy.png"); }
 .room[data-room-id="rontgen"]          .room-inner::before { background-image: url("icons/radiology.png"); }
-.room[data-room-id="koridor-orta"]     .room-inner::before { background-image: url("icons/letter-c_5084054.png"); }
+.room[data-room-id="koridor-orta"]     .room-inner::before { background-image: url("icons/letter-d_5084067.png"); }
 .room[data-room-id="laboratuvar"]      .room-inner::before { background-image: url("icons/laboratory_15395409.png"); }
 .room[data-room-id="eczane"]           .room-inner::before { background-image: url("icons/pharmacy_11469451.png"); }
-.room[data-room-id="koridor-alt"]      .room-inner::before { background-image: url("icons/letter-c_5084054.png"); }
+.room[data-room-id="koridor-alt"]      .room-inner::before { background-image: url("icons/letter-h_5084144.png"); }
 .room[data-room-id="ptt"]              .room-inner::before { background-image: url("icons/reception_4296024.png"); }
-.room[data-room-id="bekleme"]          .room-inner::before { background-image: url("icons/letter-h_5084144.png"); }
+.room[data-room-id="bekleme"]          .room-inner::before { background-image: url("icons/area.png"); }
 /* Dots representing assets */
 .dot {
     /* Boyutu büyüttük (24px -> 34px) */
